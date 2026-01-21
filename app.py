@@ -279,7 +279,7 @@ def main():
     st.sidebar.title("📑 Navigasi")
     section = st.sidebar.radio(
         "Pilih Bagian:",
-        ["🏠 Overview", "📋 Evaluasi Expert", "🔍 Efektivitas RAG", "📄 Hasil Generate Soal", "📈 Data Mentah"]
+        ["🏠 Overview", "🔍 Efektivitas RAG", "📄 Hasil Generate Soal", "📋 Evaluasi Expert", "📈 Data Mentah"]
     )
     
     # Sidebar info
