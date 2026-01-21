@@ -212,7 +212,7 @@ def load_assessments():
         return []
 
 @st.cache_data
-def load_retrieval_data():
+def load_retrieval_data_final():
     """Load and aggregate retrieval analysis data from raw results"""
     try:
         # Load raw results
@@ -221,22 +221,20 @@ def load_retrieval_data():
         # Calculate dynamic sigmoid scores first (0-100% scale for display)
         import numpy as np
         df["rerank_sigmoid"] = 1 / (1 + np.exp(-df["rerank_avg_score"]))
-        df["rerank_top1_sigmoid"] = 1 / (1 + np.exp(-df["rerank_top1"]))
+        # df["rerank_top1_sigmoid"] = 1 / (1 + np.exp(-df["rerank_top1"])) # Not used in this view
         
         # Aggregate by Subject
         agg_df = df.groupby("mata_kuliah").agg({
             "rerank_sigmoid": "mean",
-            "rerank_top1_sigmoid": "mean", 
             "total_time_ms": "mean",
             "query": "count"
         }).reset_index()
         
         # Rename columns to match the UI expectations
-        agg_df.columns = ["Mata Kuliah", "P(relevant)", "Top-1 Score (avg)", "Response Time (ms)", "Jumlah Query"]
+        agg_df.columns = ["Mata Kuliah", "P(relevant)", "Response Time (ms)", "Jumlah Query"]
         
         # Convert to percentage for display consistency (0-1 -> 0-100)
         agg_df["P(relevant)"] = agg_df["P(relevant)"] * 100
-        agg_df["Top-1 Score (avg)"] = agg_df["Top-1 Score (avg)"] * 100
         
         return agg_df[["Mata Kuliah", "P(relevant)", "Response Time (ms)"]]
     except Exception as e:
@@ -339,7 +337,8 @@ def main():
     # Load all data
     evaluations = load_evaluations()
     assessments = load_assessments()
-    retrieval_data = load_retrieval_data()
+    assessments = load_assessments()
+    retrieval_data = load_retrieval_data_final()
     rag_effectiveness = load_rag_effectiveness()
     sigmoid_data = load_sigmoid_analysis()
     
