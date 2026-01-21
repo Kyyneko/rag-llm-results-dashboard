@@ -194,7 +194,7 @@ BASE_PATH = Path(__file__).parent / "hasil"
 def load_evaluations():
     """Load expert evaluation data"""
     try:
-        with open(BASE_PATH / "evaluations.json", "r", encoding="utf-8") as f:
+        with open(BASE_PATH / "Data_Evaluasi_Expert.json", "r", encoding="utf-8") as f:
             return json.load(f)
     except Exception as e:
         st.error(f"Error loading evaluations: {e}")
@@ -204,7 +204,7 @@ def load_evaluations():
 def load_assessments():
     """Load generated assessments"""
     try:
-        with open(BASE_PATH / "assessmentss.json", "r", encoding="utf-8") as f:
+        with open(BASE_PATH / "Log_Hasil_Generate_Soal.json", "r", encoding="utf-8") as f:
             return json.load(f)
     except Exception as e:
         st.error(f"Error loading assessments: {e}")
@@ -215,7 +215,7 @@ def load_retrieval_data():
     """Load and aggregate retrieval analysis data from raw results"""
     try:
         # Load raw results
-        df = pd.read_csv(BASE_PATH / "retrieval_results_raw.csv")
+        df = pd.read_csv(BASE_PATH / "Raw_Data_Retrieval.csv")
         
         # Calculate dynamic sigmoid scores first (0-100% scale for display)
         import numpy as np
@@ -243,12 +243,11 @@ def load_retrieval_data():
         return pd.DataFrame()
 
 @st.cache_data
-@st.cache_data
 def load_rag_effectiveness():
     """Load RAG effectiveness summary from raw results"""
     try:
         # Load and process raw data
-        df = pd.read_csv(BASE_PATH / "retrieval_results_raw.csv")
+        df = pd.read_csv(BASE_PATH / "Raw_Data_Retrieval.csv")
         import numpy as np
         
         # Calculate dynamic sigmoid scores
@@ -287,12 +286,11 @@ def load_rag_effectiveness():
         return pd.DataFrame()
 
 @st.cache_data
-@st.cache_data
 def load_sigmoid_analysis():
     """Load retrieval results and calculate sigmoid scores dynamically"""
     try:
         # Load raw results
-        df = pd.read_csv(BASE_PATH / "retrieval_results_raw.csv")
+        df = pd.read_csv(BASE_PATH / "Raw_Data_Retrieval.csv")
         
         # Calculate Sigmoid (1 / (1 + exp(-x))) for Rerank scores (Logits)
         import numpy as np
