@@ -684,6 +684,47 @@ def main():
             col4.metric("Peningkatan", f"+{improvement:.1f}%", delta="signifikan" if improvement > 10 else "moderat")
             
             st.success(f"✅ **Reranking meningkatkan probabilitas relevansi sebesar +{improvement:.1f}%** (dari {avg_faiss:.1f}% ke {avg_rerank:.1f}%)")
+            
+            st.markdown("---")
+            
+            # Detailed FAISS vs Reranking table
+            st.markdown("### 📊 Detail Skor FAISS vs Reranking per Query")
+            
+            # Filter by subject
+            subjects = sorted(sigmoid_data["mata_kuliah"].unique().tolist())
+            selected_subject = st.selectbox("Filter Mata Kuliah:", ["Semua"] + subjects, key="sigmoid_filter")
+            
+            filtered_sigmoid = sigmoid_data.copy()
+            if selected_subject != "Semua":
+                filtered_sigmoid = filtered_sigmoid[filtered_sigmoid["mata_kuliah"] == selected_subject]
+            
+            # Prepare display dataframe
+            display_df = filtered_sigmoid.copy()
+            display_df["FAISS %"] = (display_df["faiss_sigmoid"] * 100).round(1)
+            display_df["Rerank %"] = (display_df["rerank_sigmoid"] * 100).round(1)
+            display_df["Top-1 %"] = (display_df["rerank_top1_sigmoid"] * 100).round(1)
+            display_df["Improvement"] = (display_df["Rerank %"] - display_df["FAISS %"]).round(1)
+            
+            # Shorten query text for display
+            display_df["Query"] = display_df["query"].str[:50] + "..."
+            
+            st.dataframe(
+                display_df[["mata_kuliah", "Query", "FAISS %", "Rerank %", "Top-1 %", "Improvement"]].rename(columns={
+                    "mata_kuliah": "Mata Kuliah"
+                }).style.format({
+                    "FAISS %": "{:.1f}%",
+                    "Rerank %": "{:.1f}%",
+                    "Top-1 %": "{:.1f}%",
+                    "Improvement": "+{:.1f}%"
+                }).background_gradient(
+                    cmap="RdYlGn", subset=["Improvement"], vmin=-10, vmax=50
+                ),
+                use_container_width=True,
+                hide_index=True,
+                height=400
+            )
+            
+            st.info(f"Menampilkan **{len(filtered_sigmoid)}** query. Rata-rata improvement: **+{filtered_sigmoid['rerank_sigmoid'].mean() * 100 - filtered_sigmoid['faiss_sigmoid'].mean() * 100:.1f}%**")
     
     # ==================== HASIL GENERATE SOAL ====================
     elif section == "📄 Hasil Generate Soal":
