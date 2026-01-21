@@ -705,16 +705,12 @@ def main():
             # Shorten query text for display
             display_df["Query"] = display_df["query"].str[:50] + "..."
             
+            # Display table without complex styling
+            display_table = display_df[["mata_kuliah", "Query", "FAISS", "Rerank", "Top-1"]].copy()
+            display_table.columns = ["Mata Kuliah", "Query", "FAISS", "Rerank", "Top-1"]
+            
             st.dataframe(
-                display_df[["mata_kuliah", "Query", "FAISS", "Rerank", "Top-1"]].rename(columns={
-                    "mata_kuliah": "Mata Kuliah"
-                }).style.format({
-                    "FAISS": "{:.2f}",
-                    "Rerank": "{:.2f}",
-                    "Top-1": "{:.2f}"
-                }).background_gradient(
-                    cmap="Blues", subset=["FAISS", "Rerank", "Top-1"], vmin=0, vmax=1
-                ),
+                display_table,
                 use_container_width=True,
                 hide_index=True,
                 height=400
