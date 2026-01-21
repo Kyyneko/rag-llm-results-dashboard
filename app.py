@@ -229,12 +229,26 @@ def load_rag_effectiveness():
         return pd.DataFrame()
 
 @st.cache_data
+@st.cache_data
 def load_sigmoid_analysis():
-    """Load sigmoid analysis for retrieval"""
+    """Load retrieval results and calculate sigmoid scores dynamically"""
     try:
-        return pd.read_csv(BASE_PATH / "retrieval_sigmoid_analysis.csv")
+        # Load raw results
+        df = pd.read_csv(BASE_PATH / "retrieval_results_raw.csv")
+        
+        # Calculate Sigmoid (1 / (1 + exp(-x))) for Rerank scores (Logits)
+        import numpy as np
+        
+        # FAISS score is Cosine Similarity (already 0-1)
+        df["faiss_sigmoid"] = df["faiss_avg_score"]
+        
+        # Rerank score is Logit -> Apply Sigmoid to get Probability (0-1)
+        df["rerank_sigmoid"] = 1 / (1 + np.exp(-df["rerank_avg_score"]))
+        df["rerank_top1_sigmoid"] = 1 / (1 + np.exp(-df["rerank_top1"]))
+        
+        return df
     except Exception as e:
-        st.error(f"Error loading sigmoid analysis: {e}")
+        st.error(f"Error loading retrieval results: {e}")
         return pd.DataFrame()
 
 def calculate_evaluation_stats(evaluations):
