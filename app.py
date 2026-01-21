@@ -671,8 +671,8 @@ def main():
             display_df["P(relevant)"] = (display_df["rerank_sigmoid"] * 100).round(1).astype(str) + "%"
             display_df["P(relevant) Top-1"] = (display_df["rerank_top1_sigmoid"] * 100).round(1).astype(str) + "%"
             
-            # Shorten query text for display
-            display_df["Query"] = display_df["query"].str[:50] + "..."
+            # Shorten query text for display (removed, show full)
+            display_df["Query"] = display_df["query"]
             
             # Display table
             display_table = display_df[["mata_kuliah", "Query", "FAISS", "P(relevant)", "P(relevant) Top-1"]].copy()
