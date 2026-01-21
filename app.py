@@ -463,27 +463,7 @@ def main():
     elif section == "📋 Evaluasi Expert":
         st.markdown("## 📋 Hasil Evaluasi Expert")
         
-        # --- Added: Soal Reference Section ---
-        with st.expander("📄 Referensi: Lihat Daftar Soal yang Dievaluasi (Klik untuk membuka)", expanded=False):
-            st.markdown("Berikut adalah soal-soal hasil generate RAG yang dinilai oleh para expert.")
-            
-            if assessments:
-                # Get subjects
-                subjects_ref = sorted(list(set([a["mata_kuliah"] for a in assessments])))
-                selected_subject_ref = st.selectbox("Pilih Mata Kuliah:", subjects_ref, key="ref_soal_subject")
-                
-                # Filter assessments
-                filtered_ref = [a for a in assessments if a["mata_kuliah"] == selected_subject_ref]
-                
-                st.success(f"Menampilkan **{len(filtered_ref)}** soal untuk mata kuliah **{selected_subject_ref}**")
-                
-                for i, ax in enumerate(filtered_ref, 1):
-                    st.markdown(f"#### {i}. Topik: {ax.get('topic', '-')} ({ax.get('difficulty', '-')})")
-                    st.markdown(ax.get("content", "No content"))
-                    st.markdown("---")
-            else:
-                st.warning("Data log soal tidak ditemukan.")
-        # -------------------------------------
+
 
         st.info("**9 evaluator** melakukan evaluasi terhadap **26 sampel soal** yang dihasilkan sistem, menghasilkan **50 evaluasi** total.")
         
