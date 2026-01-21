@@ -859,33 +859,66 @@ def main():
     elif section == "📈 Data Mentah":
         st.markdown("## 📈 Data Mentah Penelitian")
         
-        files_info = [
-            ("evaluations.json", "Hasil evaluasi expert", "50 evaluasi"),
-            ("assessmentss.json", "Soal yang dihasilkan", "120 soal"),
-            ("tabel_3_9_retrieval.csv", "Metrik retrieval per mata kuliah", "5 rows"),
-            ("rag_effectiveness_summary.csv", "Ringkasan efektivitas RAG", "Summary"),
-            ("retrieval_sigmoid_analysis.csv", "Analisis sigmoid retrieval", "100 query"),
-        ]
+        # Get list of files in hasil directory
+        data_files = sorted([f for f in BASE_PATH.iterdir() if f.suffix in ['.csv', '.json']], key=lambda x: x.name)
         
-        st.dataframe(
-            pd.DataFrame(files_info, columns=["File", "Deskripsi", "Jumlah Data"]),
-            use_container_width=True,
-            hide_index=True
-        )
-        
-        st.markdown("---")
-        
-        preview_option = st.selectbox(
-            "Pilih data untuk preview:",
-            ["Evaluations (Sample)", "RAG Effectiveness", "Retrieval per Mata Kuliah"]
-        )
-        
-        if preview_option == "Evaluations (Sample)":
-            st.json(evaluations[:3] if len(evaluations) > 3 else evaluations)
-        elif preview_option == "RAG Effectiveness":
-            st.dataframe(rag_effectiveness, use_container_width=True)
-        elif preview_option == "Retrieval per Mata Kuliah":
-            st.dataframe(retrieval_data, use_container_width=True)
+        if not data_files:
+            st.warning("Belum ada data mentah yang tersedia.")
+        else:
+            # Display file list summary
+            files_data = []
+            for f in data_files:
+                size_kb = f.stat().st_size / 1024
+                files_data.append({
+                    "Nama File": f.name,
+                    "Tipe": f.suffix.upper().replace('.', ''),
+                    "Ukuran": f"{size_kb:.2f} KB"
+                })
+                
+            st.dataframe(pd.DataFrame(files_data), use_container_width=True, hide_index=True)
+            
+            st.markdown("---")
+            st.subheader("🛠️ Preview & Download")
+            
+            col1, col2 = st.columns([3, 1])
+            
+            with col1:
+                selected_file_name = st.selectbox("Pilih file untuk dilihat:", [f.name for f in data_files])
+            
+            selected_file_path = BASE_PATH / selected_file_name
+            
+            # Prepare data for download and preview
+            data_to_download = None
+            mime_type = "text/plain"
+            
+            try:
+                if selected_file_path.suffix == '.csv':
+                    df = pd.read_csv(selected_file_path)
+                    st.dataframe(df, use_container_width=True)
+                    data_to_download = df.to_csv(index=False).encode('utf-8')
+                    mime_type = "text/csv"
+                    
+                elif selected_file_path.suffix == '.json':
+                    with open(selected_file_path, 'r', encoding='utf-8') as f:
+                        json_data = json.load(f)
+                    st.json(json_data, expanded=False)
+                    data_to_download = json.dumps(json_data, indent=2).encode('utf-8')
+                    mime_type = "application/json"
+                
+                with col2:
+                    st.write("") # Spacer to align button
+                    st.write("") 
+                    if data_to_download:
+                        st.download_button(
+                            label="⬇️ Download File",
+                            data=data_to_download,
+                            file_name=selected_file_name,
+                            mime=mime_type,
+                            type="primary",
+                            use_container_width=True
+                        )
+            except Exception as e:
+                st.error(f"Gagal memuat file: {e}")
     
     # Footer
     st.markdown("---")
