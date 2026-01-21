@@ -698,6 +698,35 @@ def main():
                 st.bar_chart(chart_data)
         
         st.markdown("---")
+        
+        # Response Time Analysis (New Section)
+        st.markdown("### ⏱️ Analisis Waktu Respons")
+        
+        if not sigmoid_data.empty:
+            avg_faiss = sigmoid_data["faiss_time_ms"].mean()
+            avg_rerank = sigmoid_data["rerank_time_ms"].mean()
+            avg_total = avg_faiss + avg_rerank
+            
+            time_df = pd.DataFrame({
+                "Komponen": ["FAISS Search", "CrossEncoder Rerank", "Total Pipeline"],
+                "Rata-rata (ms)": [avg_faiss, avg_rerank, avg_total],
+                "Persentase": [
+                    avg_faiss / avg_total * 100,
+                    avg_rerank / avg_total * 100,
+                    100.0
+                ]
+            })
+            
+            st.dataframe(
+                time_df.style.format({
+                    "Rata-rata (ms)": "{:.2f}",
+                    "Persentase": "{:.1f}%"
+                }),
+                use_container_width=True,
+                hide_index=True
+            )
+
+        st.markdown("---")
         st.markdown("### 🔬 Perbandingan Skor Retrieval")
         if not sigmoid_data.empty:
             # Summary metrics - keep as decimal 0-1
