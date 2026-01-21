@@ -61,27 +61,39 @@ st.markdown("""
     
     /* Metric cards - clean look */
     div[data-testid="stMetric"] {
-        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
         border: 1px solid #e2e8f0;
         border-radius: 12px;
-        padding: 1rem;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        padding: 1rem 1.2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.08);
     }
     
+    div[data-testid="stMetric"] > div {
+        color: #1e293b !important;
+    }
+    
+    div[data-testid="stMetric"] label,
+    div[data-testid="stMetricLabel"] > div,
+    div[data-testid="stMetricLabel"] p,
+    div[data-testid="stMetricLabel"] {
+        font-size: 0.85rem !important;
+        color: #334155 !important;
+        font-weight: 600 !important;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+    }
+    
+    div[data-testid="stMetricValue"] > div,
     div[data-testid="stMetricValue"] {
-        font-size: 1.8rem !important;
+        font-size: 2rem !important;
         font-weight: 700 !important;
         color: #1e40af !important;
     }
     
-    div[data-testid="stMetricLabel"] {
-        font-size: 0.9rem !important;
-        color: #475569 !important;
-        font-weight: 500 !important;
-    }
-    
+    div[data-testid="stMetricDelta"] > div,
     div[data-testid="stMetricDelta"] {
-        font-size: 0.85rem !important;
+        font-size: 0.8rem !important;
+        color: #059669 !important;
     }
     
     /* Tables - clean and readable */
