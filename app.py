@@ -673,15 +673,15 @@ def main():
         if not sigmoid_data.empty:
             # Summary metrics - keep as decimal 0-1
             avg_faiss = sigmoid_data["faiss_sigmoid"].mean()
-            avg_rerank = sigmoid_data["rerank_sigmoid"].mean()
-            avg_top1 = sigmoid_data["rerank_top1_sigmoid"].mean()
+            avg_rerank = sigmoid_data["rerank_sigmoid"].mean() * 100
+            avg_top1 = sigmoid_data["rerank_top1_sigmoid"].mean() * 100
             
             col1, col2, col3 = st.columns(3)
             col1.metric("FAISS (Cosine Similarity)", f"{avg_faiss:.2f}")
-            col2.metric("Rerank (Sigmoid)", f"{avg_rerank:.2f}")
-            col3.metric("Top-1 Terbaik", f"{avg_top1:.2f}")
+            col2.metric("Rerank (Probabilitas)", f"{avg_rerank:.1f}%")
+            col3.metric("Top-1 Terbaik", f"{avg_top1:.1f}%")
             
-            st.info("💡 **FAISS** = Cosine similarity (0-1), **Rerank** = Sigmoid dari CrossEncoder logit (0-1). Metrik berbeda, tidak bisa dibandingkan langsung.")
+            st.info("💡 **FAISS** = Cosine similarity (0-1), **Rerank/Top-1** = Probabilitas relevansi dari CrossEncoder (%).")
             
             st.markdown("---")
             
@@ -696,18 +696,18 @@ def main():
             if selected_subject != "Semua":
                 filtered_sigmoid = filtered_sigmoid[filtered_sigmoid["mata_kuliah"] == selected_subject]
             
-            # Prepare display dataframe - keep as decimal 0-1
+            # Prepare display dataframe
             display_df = filtered_sigmoid.copy()
             display_df["FAISS"] = display_df["faiss_sigmoid"].round(2)
-            display_df["Rerank"] = display_df["rerank_sigmoid"].round(2)
-            display_df["Top-1"] = display_df["rerank_top1_sigmoid"].round(2)
+            display_df["Rerank %"] = (display_df["rerank_sigmoid"] * 100).round(1).astype(str) + "%"
+            display_df["Top-1 %"] = (display_df["rerank_top1_sigmoid"] * 100).round(1).astype(str) + "%"
             
             # Shorten query text for display
             display_df["Query"] = display_df["query"].str[:50] + "..."
             
-            # Display table without complex styling
-            display_table = display_df[["mata_kuliah", "Query", "FAISS", "Rerank", "Top-1"]].copy()
-            display_table.columns = ["Mata Kuliah", "Query", "FAISS", "Rerank", "Top-1"]
+            # Display table
+            display_table = display_df[["mata_kuliah", "Query", "FAISS", "Rerank %", "Top-1 %"]].copy()
+            display_table.columns = ["Mata Kuliah", "Query", "FAISS", "Rerank %", "Top-1 %"]
             
             st.dataframe(
                 display_table,
