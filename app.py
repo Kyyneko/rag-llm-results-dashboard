@@ -6,7 +6,6 @@ Dashboard untuk menampilkan hasil penelitian skripsi secara interaktif untuk sid
 import streamlit as st
 import pandas as pd
 import json
-import os
 from pathlib import Path
 
 # Page Configuration
@@ -17,108 +16,162 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Clean, Professional CSS for Thesis Defense
 st.markdown("""
 <style>
-    /* Main styling */
-    .main {
-        background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    /* Import Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    /* Base styling */
+    html, body, [class*="css"] {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    /* Main container */
+    .main .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        max-width: 1200px;
     }
     
     /* Header styling */
     .main-header {
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 2.5rem;
-        font-weight: 800;
+        color: #1e3a5f;
+        font-size: 2.2rem;
+        font-weight: 700;
         text-align: center;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
     }
     
     .sub-header {
-        color: #a0aec0;
+        color: #64748b;
         text-align: center;
-        font-size: 1.1rem;
+        font-size: 1rem;
         margin-bottom: 2rem;
-    }
-    
-    /* Card styling */
-    .metric-card {
-        background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 16px;
-        padding: 1.5rem;
-        text-align: center;
-        backdrop-filter: blur(10px);
-    }
-    
-    .metric-value {
-        font-size: 2.5rem;
-        font-weight: 700;
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    
-    .metric-label {
-        color: #a0aec0;
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
-    }
-    
-    /* Table styling */
-    .dataframe {
-        border-radius: 10px;
-        overflow: hidden;
+        font-weight: 400;
     }
     
     /* Section headers */
-    .section-header {
-        color: #e2e8f0;
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin: 2rem 0 1rem 0;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid rgba(102, 126, 234, 0.5);
+    h2, h3 {
+        color: #1e3a5f !important;
+        font-weight: 600 !important;
+        margin-top: 1.5rem !important;
     }
     
-    /* Assessment card */
-    .assessment-card {
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
+    /* Metric cards - clean look */
+    div[data-testid="stMetric"] {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border: 1px solid #e2e8f0;
         border-radius: 12px;
-        padding: 1.5rem;
-        margin: 1rem 0;
+        padding: 1rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
     
-    /* Interpretation badges */
-    .badge-excellent {
-        background: linear-gradient(90deg, #10b981 0%, #059669 100%);
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-    }
-    
-    .badge-good {
-        background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-    }
-    
-    /* Statics improvement */
     div[data-testid="stMetricValue"] {
-        font-size: 2rem;
+        font-size: 1.8rem !important;
+        font-weight: 700 !important;
+        color: #1e40af !important;
     }
     
-    /* Expander styling */
+    div[data-testid="stMetricLabel"] {
+        font-size: 0.9rem !important;
+        color: #475569 !important;
+        font-weight: 500 !important;
+    }
+    
+    div[data-testid="stMetricDelta"] {
+        font-size: 0.85rem !important;
+    }
+    
+    /* Tables - clean and readable */
+    .stDataFrame {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    
+    /* Info boxes */
+    .stAlert {
+        border-radius: 8px;
+        border-left-width: 4px;
+    }
+    
+    /* Expanders */
     .streamlit-expanderHeader {
-        background: rgba(255,255,255,0.05);
+        font-weight: 500;
+        color: #1e3a5f;
+        background: #f8fafc;
         border-radius: 8px;
     }
+    
+    /* Sidebar styling */
+    section[data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #1e3a5f 0%, #0f172a 100%);
+    }
+    
+    section[data-testid="stSidebar"] .stRadio label {
+        color: white !important;
+        font-weight: 500;
+    }
+    
+    section[data-testid="stSidebar"] h1 {
+        color: white !important;
+    }
+    
+    /* Dividers */
+    hr {
+        margin: 2rem 0;
+        border-color: #e2e8f0;
+    }
+    
+    /* Success/Info boxes */
+    .stSuccess {
+        background: #ecfdf5;
+        border-color: #10b981;
+    }
+    
+    /* Charts */
+    .stPlotlyChart, .stVegaLiteChart {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    /* Footer */
+    .footer {
+        text-align: center;
+        color: #94a3b8;
+        padding: 2rem 0;
+        font-size: 0.9rem;
+        border-top: 1px solid #e2e8f0;
+        margin-top: 3rem;
+    }
+    
+    /* Summary cards */
+    .summary-box {
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+    
+    .summary-value {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    
+    .summary-label {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin-top: 0.25rem;
+    }
+    
+    /* Hide Streamlit branding */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -167,8 +220,7 @@ def load_rag_effectiveness():
 def load_sigmoid_analysis():
     """Load sigmoid analysis for retrieval"""
     try:
-        df = pd.read_csv(BASE_PATH / "retrieval_sigmoid_analysis.csv")
-        return df
+        return pd.read_csv(BASE_PATH / "retrieval_sigmoid_analysis.csv")
     except Exception as e:
         st.error(f"Error loading sigmoid analysis: {e}")
         return pd.DataFrame()
@@ -180,7 +232,7 @@ def calculate_evaluation_stats(evaluations):
     
     df = pd.DataFrame(evaluations)
     
-    stats = {
+    return {
         "total_evaluations": len(df),
         "unique_evaluators": df["evaluator_name"].nunique(),
         "unique_assessments": df["assessment_id"].nunique(),
@@ -193,17 +245,6 @@ def calculate_evaluation_stats(evaluations):
         "good_count": len(df[(df["overall"] >= 3.5) & (df["overall"] < 4.25)]),
         "needs_improvement": len(df[df["overall"] < 3.5]),
     }
-    
-    return stats
-
-def render_metric_card(value, label, prefix="", suffix=""):
-    """Render a styled metric card"""
-    st.markdown(f"""
-    <div class="metric-card">
-        <div class="metric-value">{prefix}{value}{suffix}</div>
-        <div class="metric-label">{label}</div>
-    </div>
-    """, unsafe_allow_html=True)
 
 # ================== MAIN APP ==================
 
@@ -226,14 +267,19 @@ def main():
     st.sidebar.title("📑 Navigasi")
     section = st.sidebar.radio(
         "Pilih Bagian:",
-        ["🏠 Overview", "📋 Evaluasi Expert", "🔍 Efektivitas RAG", "📄 Hasil Generate Soal Sistem Final", "📈 Data Mentah"]
+        ["🏠 Overview", "📋 Evaluasi Expert", "🔍 Efektivitas RAG", "📄 Hasil Generate Soal", "📈 Data Mentah"]
     )
+    
+    # Sidebar info
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("**📅 Penelitian 2025**")
+    st.sidebar.markdown("Mahendra - Universitas Hasanuddin")
     
     # ==================== OVERVIEW ====================
     if section == "🏠 Overview":
-        st.markdown('<h2 class="section-header">📊 Ringkasan Hasil Penelitian</h2>', unsafe_allow_html=True)
+        st.markdown("## 📊 Ringkasan Hasil Penelitian")
         
-        # Key Metrics Row
+        # Key Metrics Row - 4 columns
         col1, col2, col3, col4 = st.columns(4)
         
         with col1:
@@ -244,15 +290,16 @@ def main():
             )
         
         with col2:
+            avg_score = eval_stats.get('avg_overall', 0)
             st.metric(
                 label="Skor Rata-rata",
-                value=f"{eval_stats.get('avg_overall', 0):.2f}/5.00",
-                delta="Sangat Baik" if eval_stats.get('avg_overall', 0) >= 4.0 else "Baik"
+                value=f"{avg_score:.2f}/5.00",
+                delta="Sangat Baik" if avg_score >= 4.21 else "Baik"
             )
         
         with col3:
             st.metric(
-                label="Soal Generated",
+                label="Total Soal Dihasilkan",
                 value=len(assessments),
                 delta="5 Mata Kuliah"
             )
@@ -261,83 +308,85 @@ def main():
             st.metric(
                 label="RAG Success Rate",
                 value="74.1%",
-                delta="100 Query Test"
+                delta="100 Query"
             )
         
-        st.divider()
+        st.markdown("---")
         
-        # Evaluation Distribution
+        # Two column layout for charts
         col1, col2 = st.columns(2)
         
         with col1:
             st.markdown("### 📊 Distribusi Skor Evaluasi")
             if evaluations:
                 df_eval = pd.DataFrame(evaluations)
-                
-                # Create interpretation counts
                 interpretation_counts = df_eval["interpretation"].value_counts()
-                
-                # Bar chart
                 st.bar_chart(interpretation_counts)
                 
-                st.info(f"""
-                **Keterangan:**
-                - 🌟 Sangat Baik (≥4.25): {eval_stats.get('excellent_count', 0)} evaluasi
-                - ✅ Baik (3.5-4.24): {eval_stats.get('good_count', 0)} evaluasi
-                - ⚠️ Perlu Perbaikan (<3.5): {eval_stats.get('needs_improvement', 0)} evaluasi
+                # Legend
+                st.markdown(f"""
+                | Kategori | Jumlah |
+                |----------|--------|
+                | 🌟 Sangat Baik (≥4.25) | {eval_stats.get('excellent_count', 0)} |
+                | ✅ Baik (3.5-4.24) | {eval_stats.get('good_count', 0)} |
+                | ⚠️ Perlu Perbaikan (<3.5) | {eval_stats.get('needs_improvement', 0)} |
                 """)
         
         with col2:
             st.markdown("### 📈 Skor Per Aspek Evaluasi")
             
-            aspect_scores = {
-                "Relevansi Materi": eval_stats.get("avg_relevance", 0),
-                "Kesesuaian Tingkat Kesulitan": eval_stats.get("avg_difficulty_match", 0),
-                "Struktur Soal": eval_stats.get("avg_structure", 0),
-                "Nilai Pedagogis": eval_stats.get("avg_pedagogical", 0),
-                "Skor Keseluruhan": eval_stats.get("avg_overall", 0),
-            }
-            
             aspect_df = pd.DataFrame({
-                "Aspek": list(aspect_scores.keys()),
-                "Skor": list(aspect_scores.values())
+                "Aspek": ["Relevansi Materi", "Kesesuaian Kesulitan", "Struktur Soal", "Nilai Pedagogis", "**Rata-rata Overall**"],
+                "Skor": [
+                    eval_stats.get("avg_relevance", 0),
+                    eval_stats.get("avg_difficulty_match", 0),
+                    eval_stats.get("avg_structure", 0),
+                    eval_stats.get("avg_pedagogical", 0),
+                    eval_stats.get("avg_overall", 0)
+                ]
             })
             
             st.dataframe(
-                aspect_df.style.format({"Skor": "{:.2f}"}).background_gradient(cmap="Blues", subset=["Skor"]),
+                aspect_df.style.format({"Skor": "{:.2f}"}).background_gradient(
+                    cmap="Blues", subset=["Skor"], vmin=1, vmax=5
+                ),
                 use_container_width=True,
                 hide_index=True
             )
             
-            # Show existing image if available
+            # Show image if available
             img_path = BASE_PATH / "grafik_skor_per_aspek.png"
             if img_path.exists():
                 st.image(str(img_path), caption="Grafik Skor Expert Evaluation per Aspek")
         
-        st.divider()
+        st.markdown("---")
         
         # RAG Retrieval Summary
-        st.markdown("### 🔍 Efektivitas Retrieval RAG")
+        st.markdown("### 🔍 Efektivitas Retrieval RAG per Mata Kuliah")
         
         if not retrieval_data.empty:
             st.dataframe(
                 retrieval_data.style.format({
-                    "Relevance Score (avg)": "{:.4f}",
-                    "Top-1 Score (avg)": "{:.4f}",
-                    "Avg Response Time (ms)": "{:.2f}"
-                }).background_gradient(cmap="Greens", subset=["Relevance Score (avg)", "Top-1 Score (avg)"]),
+                    "Relevance Score (avg)": "{:.2%}",
+                    "Top-1 Score (avg)": "{:.2%}",
+                    "Avg Response Time (ms)": "{:.0f}"
+                }).background_gradient(
+                    cmap="Greens", subset=["Relevance Score (avg)", "Top-1 Score (avg)"], vmin=0, vmax=1
+                ),
                 use_container_width=True,
                 hide_index=True
             )
     
     # ==================== EVALUASI EXPERT ====================
     elif section == "📋 Evaluasi Expert":
-        st.markdown('<h2 class="section-header">📋 Hasil Evaluasi Expert</h2>', unsafe_allow_html=True)
+        st.markdown("## 📋 Hasil Evaluasi Expert")
+        
+        st.info("**9 evaluator** melakukan evaluasi terhadap **26 sampel soal** yang dihasilkan sistem, menghasilkan **50 evaluasi** total.")
         
         if evaluations:
             df_eval = pd.DataFrame(evaluations)
             
-            # Filters
+            # Filters in columns
             col1, col2, col3 = st.columns(3)
             with col1:
                 selected_matkul = st.selectbox(
@@ -351,7 +400,7 @@ def main():
                 )
             with col3:
                 selected_difficulty = st.selectbox(
-                    "Filter Tingkat Kesulitan:",
+                    "Filter Kesulitan:",
                     ["Semua", "Mudah", "Sedang", "Sulit"]
                 )
             
@@ -364,7 +413,6 @@ def main():
             if selected_difficulty != "Semua":
                 filtered_df = filtered_df[filtered_df["difficulty"] == selected_difficulty]
             
-            # Summary stats for filtered data
             st.markdown(f"### Menampilkan {len(filtered_df)} evaluasi")
             
             # Display table
@@ -392,12 +440,13 @@ def main():
                     "Struktur": "{:.0f}",
                     "Pedagogis": "{:.0f}",
                     "Overall": "{:.2f}"
-                }).background_gradient(cmap="RdYlGn", subset=["Overall"]),
+                }).background_gradient(cmap="RdYlGn", subset=["Overall"], vmin=1, vmax=5),
                 use_container_width=True,
                 hide_index=True
             )
             
             # Comments section
+            st.markdown("---")
             st.markdown("### 💬 Komentar Evaluator")
             comments = filtered_df[filtered_df["comments"].str.len() > 0][["evaluator_name", "topic", "comments"]]
             if not comments.empty:
@@ -409,7 +458,7 @@ def main():
     
     # ==================== EFEKTIVITAS RAG ====================
     elif section == "🔍 Efektivitas RAG":
-        st.markdown('<h2 class="section-header">🔍 Efektivitas Retrieval RAG</h2>', unsafe_allow_html=True)
+        st.markdown("## 🔍 Efektivitas Retrieval RAG")
         
         # Sigmoid Formula Explanation
         st.markdown("### 📐 Normalisasi Skor dengan Fungsi Sigmoid")
@@ -419,7 +468,7 @@ def main():
         with col1:
             st.markdown("""
             CrossEncoder menghasilkan skor dalam bentuk **logit** (tanpa batas). 
-            Untuk menginterpretasi sebagai probabilitas relevansi, digunakan **fungsi sigmoid**:
+            Untuk menginterpretasi sebagai probabilitas relevansi, digunakan fungsi sigmoid:
             """)
             
             st.latex(r"P(relevant) = \sigma(x) = \frac{1}{1 + e^{-x}}")
@@ -427,157 +476,100 @@ def main():
             st.markdown("""
             **Keterangan:**
             - **x** = skor CrossEncoder (raw logit)
-            - **e** = bilangan Euler (≈ 2,71828)
-            - **σ** = fungsi sigmoid
-            - **P(relevant)** = probabilitas relevansi (0-1)
+            - **σ** = fungsi sigmoid  
+            - **P(relevant)** = probabilitas relevansi (0-100%)
             """)
         
         with col2:
             st.markdown("**Tabel Konversi Referensi:**")
             conversion_table = pd.DataFrame({
-                "CrossEncoder Score": [-2.0, 0.0, 2.0, 4.0, 6.0],
-                "Sigmoid": [0.12, 0.50, 0.88, 0.98, 0.997],
-                "P(relevant)": ["12%", "50%", "88%", "98%", "99.7%"],
-                "Interpretasi": [
-                    "Hampir pasti tidak relevan",
-                    "Netral (threshold)",
-                    "Kemungkinan besar relevan",
-                    "Hampir pasti relevan",
-                    "Sangat relevan"
-                ]
+                "Score": [-2.0, 0.0, 2.0, 4.0],
+                "Sigmoid": [0.12, 0.50, 0.88, 0.98],
+                "P(r)": ["12%", "50%", "88%", "98%"],
+                "Interpretasi": ["Tidak relevan", "Netral", "Relevan", "Sangat relevan"]
             })
             st.dataframe(conversion_table, use_container_width=True, hide_index=True)
         
+        st.markdown("---")
+        
         # Interpretation thresholds
         st.markdown("**Interpretasi Probabilitas Relevansi:**")
-        interpretation_df = pd.DataFrame({
-            "Range P(relevant)": ["≥ 90%", "70% - 89%", "50% - 69%", "< 50%"],
-            "Kategori": ["🟢 Sangat Relevan", "🔵 Relevan", "🟡 Cukup Relevan", "🔴 Kurang Relevan"],
-            "Interpretasi": [
-                "Konteks sangat sesuai dengan query",
-                "Konteks sesuai dengan query",
-                "Konteks cukup sesuai, masih dapat digunakan",
-                "Konteks kurang sesuai dengan query"
-            ]
-        })
-        st.dataframe(interpretation_df, use_container_width=True, hide_index=True)
+        col1, col2, col3, col4 = st.columns(4)
+        col1.success("🟢 **≥90%** Sangat Relevan")
+        col2.info("🔵 **70-89%** Relevan")
+        col3.warning("🟡 **50-69%** Cukup Relevan")
+        col4.error("🔴 **<50%** Kurang Relevan")
         
-        st.divider()
+        st.markdown("---")
         
         # RAG Summary
         if not rag_effectiveness.empty:
             st.markdown("### 📊 Ringkasan Efektivitas RAG")
             st.dataframe(rag_effectiveness, use_container_width=True, hide_index=True)
         
-        st.divider()
+        st.markdown("---")
         
         # Retrieval per Subject
         st.markdown("### 📈 Performa Retrieval per Mata Kuliah")
         if not retrieval_data.empty:
             st.dataframe(
                 retrieval_data.style.format({
-                    "Relevance Score (avg)": "{:.4f}",
-                    "Top-1 Score (avg)": "{:.4f}",
-                    "Avg Response Time (ms)": "{:.2f}"
-                }).background_gradient(cmap="Blues", subset=["Relevance Score (avg)", "Top-1 Score (avg)"]),
+                    "Relevance Score (avg)": "{:.2%}",
+                    "Top-1 Score (avg)": "{:.2%}",
+                    "Avg Response Time (ms)": "{:.0f}"
+                }).background_gradient(
+                    cmap="Blues", subset=["Relevance Score (avg)", "Top-1 Score (avg)"], vmin=0, vmax=1
+                ),
                 use_container_width=True,
                 hide_index=True
             )
             
-            # Chart
             st.bar_chart(
                 retrieval_data.set_index("Mata Kuliah")[["Relevance Score (avg)", "Top-1 Score (avg)"]]
             )
         
-        st.divider()
+        st.markdown("---")
         
-        # Sigmoid Analysis Sample with Percentage
-        st.markdown("### 🔬 Analisis Sigmoid dengan Persentase Relevansi")
+        # Sigmoid Analysis
+        st.markdown("### 🔬 Analisis Peningkatan Reranking")
         if not sigmoid_data.empty:
-            st.success("✅ Reranking dengan CrossEncoder meningkatkan probabilitas relevansi secara signifikan.")
-            
-            # Create sample with percentage columns
-            sample_df = sigmoid_data.head(20).copy()
-            
-            # Add percentage columns
-            sample_df["FAISS P(relevant)"] = sample_df["faiss_sigmoid"] * 100
-            sample_df["Rerank P(relevant)"] = sample_df["rerank_sigmoid"] * 100
-            sample_df["Top-1 P(relevant)"] = sample_df["rerank_top1_sigmoid"] * 100
-            
-            # Select and rename columns for display
-            display_df = sample_df[[
-                "mata_kuliah", "query", 
-                "faiss_sigmoid", "FAISS P(relevant)",
-                "rerank_sigmoid", "Rerank P(relevant)",
-                "rerank_top1_sigmoid", "Top-1 P(relevant)"
-            ]].copy()
-            
-            display_df.columns = [
-                "Mata Kuliah", "Query",
-                "FAISS (σ)", "FAISS %",
-                "Rerank (σ)", "Rerank %",
-                "Top-1 (σ)", "Top-1 %"
-            ]
-            
-            # Truncate query for display
-            display_df["Query"] = display_df["Query"].str[:50] + "..."
-            
-            st.dataframe(
-                display_df.style.format({
-                    "FAISS (σ)": "{:.4f}",
-                    "FAISS %": "{:.1f}%",
-                    "Rerank (σ)": "{:.4f}",
-                    "Rerank %": "{:.1f}%",
-                    "Top-1 (σ)": "{:.4f}",
-                    "Top-1 %": "{:.1f}%"
-                }).background_gradient(cmap="RdYlGn", subset=["Rerank %", "Top-1 %"], vmin=0, vmax=100),
-                use_container_width=True,
-                hide_index=True
-            )
-            
-            # Show improvement statistics
-            st.markdown("#### 📈 Peningkatan dari FAISS ke Reranking")
+            # Summary metrics
             avg_faiss = sigmoid_data["faiss_sigmoid"].mean() * 100
             avg_rerank = sigmoid_data["rerank_sigmoid"].mean() * 100
             avg_top1 = sigmoid_data["rerank_top1_sigmoid"].mean() * 100
             improvement = avg_rerank - avg_faiss
             
-            m1, m2, m3, m4 = st.columns(4)
-            m1.metric("Avg FAISS P(relevant)", f"{avg_faiss:.1f}%")
-            m2.metric("Avg Rerank P(relevant)", f"{avg_rerank:.1f}%", delta=f"+{improvement:.1f}%")
-            m3.metric("Avg Top-1 P(relevant)", f"{avg_top1:.1f}%")
-            m4.metric("Peningkatan Reranking", f"+{improvement:.1f}%", delta="signifikan" if improvement > 10 else "moderat")
+            col1, col2, col3, col4 = st.columns(4)
+            col1.metric("FAISS (Bi-Encoder)", f"{avg_faiss:.1f}%")
+            col2.metric("Setelah Reranking", f"{avg_rerank:.1f}%", delta=f"+{improvement:.1f}%")
+            col3.metric("Top-1 Terbaik", f"{avg_top1:.1f}%")
+            col4.metric("Peningkatan", f"+{improvement:.1f}%", delta="signifikan" if improvement > 10 else "moderat")
+            
+            st.success(f"✅ **Reranking meningkatkan probabilitas relevansi sebesar +{improvement:.1f}%** (dari {avg_faiss:.1f}% ke {avg_rerank:.1f}%)")
     
-    # ==================== HASIL GENERATE SOAL SISTEM FINAL ====================
-    elif section == "📄 Hasil Generate Soal Sistem Final":
-        st.markdown('<h2 class="section-header">📄 Hasil Generate Soal Sistem Final</h2>', unsafe_allow_html=True)
+    # ==================== HASIL GENERATE SOAL ====================
+    elif section == "📄 Hasil Generate Soal":
+        st.markdown("## 📄 Hasil Generate Soal Sistem")
         
         if assessments:
-            # Statistics Overview
-            st.markdown("### 📊 Statistik Hasil Generasi")
-            
+            # Statistics
             total_soal = len(assessments)
             subjects = sorted(set(a["mata_kuliah"] for a in assessments))
-            topics = sorted(set(a.get("topic", "Unknown") for a in assessments))
             
-            # Calculate structure compliance
             complete_count = sum(1 for a in assessments if a.get("metrics", {}).get("structure_compliance", 0) == 1.0)
             compliance_rate = (complete_count / total_soal * 100) if total_soal > 0 else 0
-            
-            # Calculate avg processing time
             avg_time = sum(a.get("metrics", {}).get("processing_time_s", 0) for a in assessments) / total_soal if total_soal > 0 else 0
             
             col1, col2, col3, col4 = st.columns(4)
             col1.metric("Total Soal", total_soal)
             col2.metric("Mata Kuliah", len(subjects))
-            col3.metric("Structure Compliance", f"{compliance_rate:.1f}%")
+            col3.metric("Structure Compliance", f"{compliance_rate:.0f}%")
             col4.metric("Avg Processing Time", f"{avg_time:.1f}s")
             
-            st.divider()
+            st.markdown("---")
             
-            # Distribution per Subject
+            # Distribution
             st.markdown("### 📈 Distribusi per Mata Kuliah")
-            
             subject_counts = {}
             for a in assessments:
                 subj = a["mata_kuliah"]
@@ -594,144 +586,71 @@ def main():
             with col2:
                 st.bar_chart(dist_df.set_index("Mata Kuliah"))
             
-            st.divider()
+            st.markdown("---")
             
-            # Filters for viewing
-            st.markdown("### 🔎 Lihat Soal")
-            col1, col2, col3 = st.columns(3)
+            # View soal
+            st.markdown("### 📄 Lihat Detail Soal")
             
-            difficulties = ["Semua", "Mudah", "Sedang", "Sulit"]
+            detail_subject = st.selectbox("Pilih Mata Kuliah:", subjects)
+            detail_filtered = [a for a in assessments if a["mata_kuliah"] == detail_subject]
             
-            with col1:
-                selected_subject = st.selectbox("Pilih Mata Kuliah:", ["Semua"] + subjects)
-            with col2:
-                selected_diff = st.selectbox("Pilih Tingkat Kesulitan:", difficulties)
-            with col3:
-                # Get available topics for selected subject
-                if selected_subject == "Semua":
-                    available_topics = sorted(set(a.get("topic", "Unknown") for a in assessments))
-                else:
-                    available_topics = sorted(set(a.get("topic", "Unknown") for a in assessments if a["mata_kuliah"] == selected_subject))
-                selected_topic = st.selectbox("Pilih Topik:", ["Semua"] + available_topics)
+            st.info(f"Menampilkan **{len(detail_filtered)} soal** untuk {detail_subject}")
             
-            # Filter assessments
-            filtered = assessments.copy()
-            if selected_subject != "Semua":
-                filtered = [a for a in filtered if a["mata_kuliah"] == selected_subject]
-            if selected_diff != "Semua":
-                filtered = [a for a in filtered if a["difficulty"] == selected_diff]
-            if selected_topic != "Semua":
-                filtered = [a for a in filtered if a.get("topic", "Unknown") == selected_topic]
-            
-            st.markdown(f"### 📝 Menampilkan {len(filtered)} soal")
-            
-            if filtered:
-                # Create a table view first
-                table_data = []
-                for a in filtered:
-                    metrics = a.get("metrics", {})
-                    table_data.append({
-                        "Mata Kuliah": a["mata_kuliah"],
-                        "Topik": a.get("topic", "-"),
-                        "Kesulitan": a["difficulty"],
-                        "Processing (s)": metrics.get("processing_time_s", 0),
-                        "Struktur": "✅" if metrics.get("structure_compliance", 0) == 1.0 else "⚠️",
-                        "Soal": "✅" if metrics.get("has_soal") else "❌",
-                        "Kunci": "✅" if metrics.get("has_kunci_jawaban") else "❌"
-                    })
+            for i, assessment in enumerate(detail_filtered, 1):
+                topic = assessment.get("topic", "Unknown")
+                difficulty = assessment["difficulty"]
                 
-                table_df = pd.DataFrame(table_data)
-                st.dataframe(
-                    table_df.style.format({"Processing (s)": "{:.1f}"}),
-                    use_container_width=True,
-                    hide_index=True
-                )
-                
-                st.divider()
-                
-                # Show detailed content - require mata kuliah selection first
-                st.markdown("### 📄 Detail Soal")
-                
-                # Require mata kuliah selection for detail view
-                detail_subject = st.selectbox(
-                    "Pilih Mata Kuliah untuk melihat detail soal:", 
-                    subjects,
-                    key="detail_subject_select"
-                )
-                
-                # Filter assessments for selected subject only
-                detail_filtered = [a for a in assessments if a["mata_kuliah"] == detail_subject]
-                
-                st.markdown(f"**Menampilkan {len(detail_filtered)} soal untuk {detail_subject}**")
-                
-                # Show all soal for selected mata kuliah
-                for i, assessment in enumerate(detail_filtered, 1):
-                    topic = assessment.get("topic", "Unknown Topic")
-                    difficulty = assessment["difficulty"]
+                with st.expander(f"📄 Soal {i}: {topic} ({difficulty})"):
+                    if "metrics" in assessment:
+                        metrics = assessment["metrics"]
+                        col1, col2, col3 = st.columns(3)
+                        col1.metric("Processing Time", f"{metrics.get('processing_time_s', 0):.1f}s")
+                        col2.metric("Has Soal", "✅" if metrics.get('has_soal') else "❌")
+                        col3.metric("Has Kunci", "✅" if metrics.get('has_kunci_jawaban') else "❌")
                     
-                    with st.expander(f"📄 Soal {i}: {topic} ({difficulty})"):
-                        # Metrics row
-                        if "metrics" in assessment:
-                            metrics = assessment["metrics"]
-                            m1, m2, m3, m4 = st.columns(4)
-                            m1.metric("Processing Time", f"{metrics.get('processing_time_s', 0):.1f}s")
-                            m2.metric("Structure Score", f"{metrics.get('structure_compliance', 0)*100:.0f}%")
-                            m3.metric("Has Soal", "✅" if metrics.get('has_soal') else "❌")
-                            m4.metric("Has Kunci", "✅" if metrics.get('has_kunci_jawaban') else "❌")
-                        
-                        st.divider()
-                        
-                        # Content
-                        content = assessment.get("content", "No content available")
-                        st.markdown(content)
-            else:
-                st.warning("Tidak ada soal untuk kombinasi filter yang dipilih.")
+                    st.markdown("---")
+                    st.markdown(assessment.get("content", "No content"))
         else:
             st.error("Data assessments tidak dapat dimuat.")
     
     # ==================== DATA MENTAH ====================
     elif section == "📈 Data Mentah":
-        st.markdown('<h2 class="section-header">📈 Data Mentah Penelitian</h2>', unsafe_allow_html=True)
-        
-        st.markdown("""
-        Berikut adalah akses langsung ke file-file data mentah yang digunakan dalam penelitian:
-        """)
+        st.markdown("## 📈 Data Mentah Penelitian")
         
         files_info = [
-            ("evaluations.json", "Hasil evaluasi expert (50+ evaluasi)", "26 KB"),
-            ("assessmentss.json", "Soal-soal yang di-generate", "787 KB"),
-            ("tabel_3_9_retrieval.csv", "Hasil pengukuran retrieval per mata kuliah", "294 bytes"),
-            ("rag_effectiveness_summary.csv", "Ringkasan efektivitas RAG", "182 bytes"),
-            ("retrieval_sigmoid_analysis.csv", "Analisis sigmoid retrieval (100 query)", "12 KB"),
-            ("chunking_results_*.json", "Hasil proses chunking dokumen", "-"),
-            ("extraction_results_*.json", "Hasil ekstraksi dokumen", "-"),
+            ("evaluations.json", "Hasil evaluasi expert", "50 evaluasi"),
+            ("assessmentss.json", "Soal yang dihasilkan", "120 soal"),
+            ("tabel_3_9_retrieval.csv", "Metrik retrieval per mata kuliah", "5 rows"),
+            ("rag_effectiveness_summary.csv", "Ringkasan efektivitas RAG", "Summary"),
+            ("retrieval_sigmoid_analysis.csv", "Analisis sigmoid retrieval", "100 query"),
         ]
         
-        df_files = pd.DataFrame(files_info, columns=["Nama File", "Deskripsi", "Ukuran"])
-        st.dataframe(df_files, use_container_width=True, hide_index=True)
-        
-        # Quick data preview
-        st.divider()
-        st.markdown("### 🔎 Preview Data")
-        
-        preview_option = st.selectbox(
-            "Pilih data untuk di-preview:",
-            ["Evaluations", "RAG Effectiveness", "Retrieval per Mata Kuliah"]
+        st.dataframe(
+            pd.DataFrame(files_info, columns=["File", "Deskripsi", "Jumlah Data"]),
+            use_container_width=True,
+            hide_index=True
         )
         
-        if preview_option == "Evaluations":
-            st.json(evaluations[:5] if len(evaluations) > 5 else evaluations)
+        st.markdown("---")
+        
+        preview_option = st.selectbox(
+            "Pilih data untuk preview:",
+            ["Evaluations (Sample)", "RAG Effectiveness", "Retrieval per Mata Kuliah"]
+        )
+        
+        if preview_option == "Evaluations (Sample)":
+            st.json(evaluations[:3] if len(evaluations) > 3 else evaluations)
         elif preview_option == "RAG Effectiveness":
             st.dataframe(rag_effectiveness, use_container_width=True)
         elif preview_option == "Retrieval per Mata Kuliah":
             st.dataframe(retrieval_data, use_container_width=True)
     
     # Footer
-    st.divider()
+    st.markdown("---")
     st.markdown("""
-    <div style="text-align: center; color: #718096; padding: 1rem;">
-        <p>RAG-LLM Assessment Generator | Skripsi 2026</p>
-        <p style="font-size: 0.85rem;">Dashboard untuk presentasi sidang ujian</p>
+    <div class="footer">
+        <p><strong>RAG-LLM Assessment Generator</strong> | Skripsi 2025</p>
+        <p>Mahendra - Departemen Matematika, Universitas Hasanuddin</p>
     </div>
     """, unsafe_allow_html=True)
 
