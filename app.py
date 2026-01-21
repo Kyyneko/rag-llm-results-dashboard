@@ -669,26 +669,24 @@ def main():
         st.markdown("---")
         
         # Sigmoid Analysis
-        st.markdown("### 🔬 Analisis Peningkatan Reranking")
+        st.markdown("### 🔬 Perbandingan Skor Retrieval")
         if not sigmoid_data.empty:
             # Summary metrics - keep as decimal 0-1
             avg_faiss = sigmoid_data["faiss_sigmoid"].mean()
             avg_rerank = sigmoid_data["rerank_sigmoid"].mean()
             avg_top1 = sigmoid_data["rerank_top1_sigmoid"].mean()
-            improvement = avg_rerank - avg_faiss
             
-            col1, col2, col3, col4 = st.columns(4)
-            col1.metric("FAISS (Bi-Encoder)", f"{avg_faiss:.2f}")
-            col2.metric("Setelah Reranking", f"{avg_rerank:.2f}", delta=f"+{improvement:.2f}")
+            col1, col2, col3 = st.columns(3)
+            col1.metric("FAISS (Cosine Similarity)", f"{avg_faiss:.2f}")
+            col2.metric("Rerank (Sigmoid)", f"{avg_rerank:.2f}")
             col3.metric("Top-1 Terbaik", f"{avg_top1:.2f}")
-            col4.metric("Peningkatan", f"+{improvement:.2f}", delta="signifikan" if improvement > 0.1 else "moderat")
             
-            st.success(f"✅ **Reranking meningkatkan probabilitas relevansi sebesar +{improvement:.2f}** (dari {avg_faiss:.2f} ke {avg_rerank:.2f})")
+            st.info("💡 **FAISS** = Cosine similarity (0-1), **Rerank** = Sigmoid dari CrossEncoder logit (0-1). Metrik berbeda, tidak bisa dibandingkan langsung.")
             
             st.markdown("---")
             
             # Detailed FAISS vs Reranking table
-            st.markdown("### 📊 Detail Skor FAISS vs Reranking per Query")
+            st.markdown("### 📊 Detail Skor Retrieval per Query")
             
             # Filter by subject
             subjects = sorted(sigmoid_data["mata_kuliah"].unique().tolist())
@@ -703,29 +701,26 @@ def main():
             display_df["FAISS"] = display_df["faiss_sigmoid"].round(2)
             display_df["Rerank"] = display_df["rerank_sigmoid"].round(2)
             display_df["Top-1"] = display_df["rerank_top1_sigmoid"].round(2)
-            display_df["Improvement"] = (display_df["Rerank"] - display_df["FAISS"]).round(2)
             
             # Shorten query text for display
             display_df["Query"] = display_df["query"].str[:50] + "..."
             
             st.dataframe(
-                display_df[["mata_kuliah", "Query", "FAISS", "Rerank", "Top-1", "Improvement"]].rename(columns={
+                display_df[["mata_kuliah", "Query", "FAISS", "Rerank", "Top-1"]].rename(columns={
                     "mata_kuliah": "Mata Kuliah"
                 }).style.format({
                     "FAISS": "{:.2f}",
                     "Rerank": "{:.2f}",
-                    "Top-1": "{:.2f}",
-                    "Improvement": "+{:.2f}"
+                    "Top-1": "{:.2f}"
                 }).background_gradient(
-                    cmap="RdYlGn", subset=["Improvement"], vmin=-0.1, vmax=0.5
+                    cmap="Blues", subset=["FAISS", "Rerank", "Top-1"], vmin=0, vmax=1
                 ),
                 use_container_width=True,
                 hide_index=True,
                 height=400
             )
             
-            avg_improvement = filtered_sigmoid['rerank_sigmoid'].mean() - filtered_sigmoid['faiss_sigmoid'].mean()
-            st.info(f"Menampilkan **{len(filtered_sigmoid)}** query. Rata-rata improvement: **+{avg_improvement:.2f}**")
+            st.info(f"Menampilkan **{len(filtered_sigmoid)}** query")
     
     # ==================== HASIL GENERATE SOAL ====================
     elif section == "📄 Hasil Generate Soal":
