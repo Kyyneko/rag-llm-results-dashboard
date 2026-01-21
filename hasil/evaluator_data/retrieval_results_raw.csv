@@ -1,0 +1,101 @@
+mata_kuliah,query,faiss_time_ms,rerank_time_ms,total_time_ms,faiss_avg_score,rerank_avg_score,faiss_top1,rerank_top1
+Algoritma dan Pemrograman,Bagaimana cara menggunakan Git untuk version contr...,23.09,164.41,187.5,0.5924,3.96,0.6159,5.7317
+Algoritma dan Pemrograman,Apa perbedaan antara Git dan GitHub?,18.05,118.32,136.37,0.6135,1.5889,0.6347,2.4793
+Algoritma dan Pemrograman,Jelaskan cara membuat repository baru di GitHub,10.91,40.91,51.82,0.6618,5.2895,0.7061,6.1647
+Algoritma dan Pemrograman,Bagaimana cara menggunakan if-else di Python?,14.95,37.05,52.0,0.5182,1.8185,0.5553,2.1991
+Algoritma dan Pemrograman,Apa fungsi dari elif dalam struktur kondisi?,11.14,117.17,128.32,0.447,5.4612,0.4574,5.8558
+Algoritma dan Pemrograman,Jelaskan konsep nested if dalam pemrograman,38.84,13.45,52.29,0.4749,0.9752,0.5229,1.9218
+Algoritma dan Pemrograman,Bagaimana cara membuat loop for di Python?,11.88,33.17,45.04,0.5218,1.3044,0.559,1.6656
+Algoritma dan Pemrograman,Apa perbedaan antara while dan for loop?,13.2,35.95,49.15,0.5238,1.6003,0.5596,1.9164
+Algoritma dan Pemrograman,Jelaskan penggunaan break dan continue dalam loop,13.8,31.58,45.38,0.657,6.1715,0.7178,7.5875
+Algoritma dan Pemrograman,Bagaimana cara membuat function di Python?,10.79,41.49,52.28,0.4344,3.8599,0.4638,6.0779
+Algoritma dan Pemrograman,Apa itu error handling dengan try-except?,16.33,35.5,51.83,0.4126,0.0,0.4659,0.0
+Algoritma dan Pemrograman,Jelaskan penggunaan regular expression di Python,10.54,36.93,47.46,0.5412,4.7272,0.6836,6.286
+Algoritma dan Pemrograman,Apa itu class dan object dalam OOP Python?,12.87,34.08,46.95,0.4601,4.3898,0.5301,6.1465
+Algoritma dan Pemrograman,Bagaimana cara menggunakan constructor di Python?,11.07,34.78,45.84,0.4646,2.763,0.5248,4.2121
+Algoritma dan Pemrograman,Jelaskan konsep inheritance di Python,12.25,29.51,41.75,0.4706,4.1382,0.4973,6.5109
+Algoritma dan Pemrograman,"Apa perbedaan list, tuple, dan dictionary?",9.73,41.53,51.26,0.4071,0.0,0.4366,0.0
+Algoritma dan Pemrograman,Bagaimana cara menggunakan operator aritmatika?,11.27,32.44,43.71,0.4382,1.7902,0.499,2.3972
+Algoritma dan Pemrograman,Jelaskan tipe data dasar di Python,9.47,36.23,45.7,0.5085,6.6917,0.5455,7.0694
+Algoritma dan Pemrograman,Apa itu encapsulation dalam OOP?,10.41,31.42,41.83,0.4039,0.0,0.4279,0.0
+Algoritma dan Pemrograman,Bagaimana cara menggunakan method dalam class?,14.18,40.44,54.62,0.5372,5.3636,0.5527,6.2834
+Pemrograman Website,Bagaimana cara membuat struktur HTML dasar?,20.78,199.87,220.65,0.408,0.0,0.4216,0.0
+Pemrograman Website,Apa perbedaan antara div dan span?,16.7,59.11,75.81,0.4152,0.0,0.4511,0.0
+Pemrograman Website,Jelaskan penggunaan CSS untuk styling,19.5,35.83,55.33,0.3824,2.2263,0.39,2.897
+Pemrograman Website,Bagaimana cara menggunakan Tailwind CSS?,12.93,42.1,55.03,0.4165,0.0,0.4584,0.0
+Pemrograman Website,Apa itu responsive design dengan CSS?,17.87,45.17,63.05,0.3253,0.0,0.3482,0.0
+Pemrograman Website,Jelaskan konsep flexbox dan grid layout,11.43,33.89,45.32,0.2626,0.0,0.2729,0.0
+Pemrograman Website,Bagaimana cara membuat event handler di JavaScript...,12.74,34.16,46.89,0.2888,0.0,0.3049,0.0
+Pemrograman Website,Apa itu DOM manipulation?,11.21,41.85,53.05,0.2512,0.0,0.2767,0.0
+Pemrograman Website,Jelaskan cara menggunakan getElementById,11.33,48.71,60.04,0.3692,1.3572,0.3791,1.9486
+Pemrograman Website,Bagaimana setup koneksi database dengan PHP?,18.83,38.92,57.75,0.4589,0.0,0.4911,0.0
+Pemrograman Website,Apa itu prepared statement di PDO?,18.2,40.7,58.89,0.3387,0.0,0.3449,0.0
+Pemrograman Website,Jelaskan cara mencegah SQL injection,16.31,39.42,55.74,0.3922,0.0,0.419,0.0
+Pemrograman Website,Bagaimana cara install Laravel?,13.4,33.06,46.46,0.3047,0.0,0.3405,0.0
+Pemrograman Website,Apa itu MVC pattern di Laravel?,11.26,32.98,44.24,0.2,0.0,0.2389,0.0
+Pemrograman Website,Jelaskan konsep routing di Laravel,10.11,46.65,56.76,0.2494,0.0,0.2573,0.0
+Pemrograman Website,Bagaimana cara membuat controller di Laravel?,16.76,37.87,54.62,0.3132,0.0,0.36,0.0
+Pemrograman Website,Apa itu Eloquent ORM?,12.23,32.82,45.05,0.3366,0.0,0.3587,0.0
+Pemrograman Website,Jelaskan cara membuat relasi antar tabel,9.48,28.8,38.28,0.4702,0.0,0.4948,0.0
+Pemrograman Website,Bagaimana implementasi authentication di Laravel?,13.98,37.79,51.78,0.2905,0.0,0.3305,0.0
+Pemrograman Website,Apa fungsi middleware di Laravel?,10.58,38.25,48.84,0.2464,0.6012,0.2591,0.6012
+Basis Data,Bagaimana cara membuat tabel dengan CREATE TABLE?,19.23,126.46,145.68,0.5729,0.0,0.592,0.0
+Basis Data,Apa perbedaan PRIMARY KEY dan FOREIGN KEY?,11.68,155.73,167.4,0.4889,4.1309,0.6179,4.1309
+Basis Data,Jelaskan penggunaan constraint NOT NULL,8.75,35.89,44.64,0.4038,0.0,0.4119,0.0
+Basis Data,Bagaimana cara menggunakan SELECT dengan WHERE?,8.08,43.36,51.45,0.476,1.2675,0.5432,2.1321
+Basis Data,Apa fungsi ORDER BY dalam query?,9.82,43.28,53.11,0.378,2.6907,0.4114,3.8232
+Basis Data,Jelaskan penggunaan LIKE untuk pencarian,13.49,32.79,46.28,0.4061,0.8589,0.4494,1.6949
+Basis Data,Bagaimana cara menggunakan INSERT INTO?,9.6,36.55,46.15,0.3873,0.4069,0.4244,0.4069
+Basis Data,Apa perbedaan UPDATE dan DELETE?,13.2,42.46,55.66,0.4181,0.0,0.4742,0.0
+Basis Data,Jelaskan penggunaan TRUNCATE vs DELETE,14.44,30.01,44.45,0.3815,0.0,0.4412,0.0
+Basis Data,Bagaimana cara menggunakan operator AND dan OR?,11.73,33.92,45.65,0.4874,2.4372,0.5295,5.4459
+Basis Data,Apa itu operator BETWEEN dan IN?,10.54,34.95,45.5,0.3931,0.0,0.4224,0.0
+Basis Data,Jelaskan penggunaan operator LIKE dengan wildcard,11.81,42.55,54.35,0.4906,3.3749,0.5871,6.5191
+Basis Data,Bagaimana cara membuat JOIN antar tabel?,18.44,21.79,40.24,0.5654,0.6709,0.5971,1.0401
+Basis Data,Apa perbedaan INNER JOIN dan LEFT JOIN?,9.33,41.21,50.54,0.5373,1.4976,0.6192,2.4525
+Basis Data,Jelaskan konsep foreign key relationship,10.62,33.21,43.83,0.4345,3.3177,0.4839,4.4592
+Basis Data,Bagaimana menggunakan fungsi agregat SUM dan COUNT...,11.3,35.71,47.01,0.475,2.1794,0.5588,3.4017
+Basis Data,Apa fungsi GROUP BY dan HAVING?,15.02,34.32,49.34,0.309,1.5539,0.3582,2.3988
+Basis Data,Jelaskan penggunaan AVG dan MAX,9.49,34.53,44.02,0.4147,0.0,0.4262,0.0
+Basis Data,Bagaimana cara membuat subquery?,11.56,37.26,48.81,0.4715,0.0,0.4987,0.0
+Basis Data,"Apa itu UNION, INTERSECT, dan EXCEPT?",9.02,32.2,41.22,0.4212,4.1006,0.6279,4.1006
+OOP Java,Bagaimana cara membuat class di Java?,18.75,191.63,210.39,0.5622,3.8557,0.6419,5.723
+OOP Java,Apa perbedaan class dan object?,24.6,56.45,81.05,0.4961,2.8261,0.512,2.8844
+OOP Java,Jelaskan struktur dasar program Java,10.83,39.6,50.43,0.6253,0.9362,0.6569,1.2507
+OOP Java,Bagaimana cara membuat constructor?,11.18,32.11,43.29,0.4555,0.0,0.4836,0.0
+OOP Java,Apa itu overloading constructor?,8.2,35.84,44.04,0.3378,0.0,0.4193,0.0
+OOP Java,Jelaskan penggunaan this keyword,11.43,34.94,46.37,0.4452,1.0305,0.4556,1.1102
+OOP Java,Bagaimana implementasi encapsulation?,12.97,29.28,42.24,0.4246,0.4706,0.4827,0.4706
+OOP Java,Apa itu getter dan setter?,9.59,28.25,37.84,0.4033,0.0,0.4297,0.0
+OOP Java,Jelaskan access modifier public dan private,11.68,34.94,46.62,0.4775,4.0392,0.5174,6.7812
+OOP Java,Bagaimana cara menggunakan inheritance?,16.89,30.9,47.79,0.4857,3.5453,0.5279,5.1572
+OOP Java,Apa itu keyword extends?,14.17,32.28,46.45,0.3203,0.0,0.3281,0.0
+OOP Java,Jelaskan konsep method overriding,8.39,27.51,35.9,0.4863,4.783,0.5351,5.5611
+OOP Java,Bagaimana implementasi polymorphism?,10.89,42.16,53.05,0.4902,2.3721,0.6041,3.938
+OOP Java,Apa perbedaan compile-time dan runtime polymorphis...,13.9,31.57,45.46,0.408,0.5626,0.5448,0.5626
+OOP Java,Jelaskan penggunaan abstract class,11.53,27.97,39.5,0.5755,3.9183,0.6853,6.5116
+OOP Java,Bagaimana cara menggunakan interface?,12.04,26.3,38.34,0.4623,4.1757,0.469,4.4555
+OOP Java,Apa itu Thread di Java?,12.3,31.88,44.18,0.5958,3.9313,0.6097,6.2834
+OOP Java,Jelaskan cara membuat Thread dengan Runnable,11.09,32.62,43.71,0.6817,4.7454,0.7023,7.817
+OOP Java,Bagaimana synchronization bekerja?,10.59,33.43,44.02,0.3395,0.0,0.3747,0.0
+OOP Java,Apa itu thread-safe programming?,12.39,30.32,42.71,0.3773,0.0,0.4284,0.0
+Pemrograman Mobile,Bagaimana cara membuat Activity di Android?,18.33,136.62,154.95,0.5739,2.745,0.5902,5.6443
+Pemrograman Mobile,Apa itu lifecycle Activity?,12.04,141.31,153.35,0.3709,1.3619,0.395,2.3022
+Pemrograman Mobile,Jelaskan method onCreate dan onPause,17.89,31.43,49.31,0.3922,1.8811,0.427,1.8811
+Pemrograman Mobile,Bagaimana cara menggunakan Intent?,10.91,43.33,54.24,0.4313,1.0849,0.4498,3.194
+Pemrograman Mobile,Apa perbedaan implicit dan explicit Intent?,11.88,48.87,60.76,0.4174,3.2093,0.5094,4.404
+Pemrograman Mobile,Jelaskan cara mengirim data antar Activity,17.1,40.3,57.4,0.5269,2.0882,0.5694,3.0852
+Pemrograman Mobile,Bagaimana cara membuat RecyclerView?,15.75,39.0,54.75,0.561,0.4907,0.6528,0.4907
+Pemrograman Mobile,Apa itu ViewHolder pattern?,14.02,41.89,55.91,0.3228,0.0,0.4222,0.0
+Pemrograman Mobile,Jelaskan penggunaan Adapter di RecyclerView,15.54,37.17,52.7,0.5396,1.6801,0.5937,4.1358
+Pemrograman Mobile,Bagaimana cara membuat Fragment?,15.99,31.66,47.66,0.5019,2.6837,0.5555,2.6837
+Pemrograman Mobile,Apa perbedaan Activity dan Fragment?,10.37,37.68,48.04,0.5351,4.56,0.5891,7.1943
+Pemrograman Mobile,Jelaskan komunikasi antar Fragment,19.59,37.65,57.24,0.4904,1.8307,0.5449,1.8307
+Pemrograman Mobile,Bagaimana menggunakan background thread?,14.29,48.54,62.83,0.4174,4.1132,0.5241,4.6383
+Pemrograman Mobile,Apa itu AsyncTask di Android?,11.07,31.8,42.87,0.5504,0.0,0.5717,0.0
+Pemrograman Mobile,Jelaskan penggunaan Coroutines,9.05,41.74,50.79,0.4116,0.0,0.4484,0.0
+Pemrograman Mobile,Bagaimana cara request API dengan Retrofit?,10.89,44.65,55.54,0.5391,1.5969,0.6007,2.6099
+Pemrograman Mobile,Apa itu JSON parsing?,13.83,34.75,48.58,0.3026,0.0,0.3503,0.0
+Pemrograman Mobile,Jelaskan penggunaan Volley untuk networking,9.24,37.69,46.93,0.4539,1.5682,0.5719,2.35
+Pemrograman Mobile,Bagaimana menyimpan data dengan SharedPreferences?,16.84,37.13,53.97,0.5434,5.8298,0.6275,7.4958
+Pemrograman Mobile,Bagaimana menggunakan SQLite di Android?,13.12,43.7,56.82,0.5996,4.884,0.6764,6.1041
