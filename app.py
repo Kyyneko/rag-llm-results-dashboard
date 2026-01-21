@@ -708,7 +708,7 @@ def main():
                 height=400
             )
             
-            st.info(f"Menampilkan **{len(filtered_sigmoid)}** query")
+            # Removed st.info count display as per user request
     
     # ==================== HASIL GENERATE SOAL ====================
     elif section == "📄 Hasil Generate Soal":
