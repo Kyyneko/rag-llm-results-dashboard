@@ -212,9 +212,32 @@ def load_assessments():
 
 @st.cache_data
 def load_retrieval_data():
-    """Load retrieval analysis data"""
+    """Load and aggregate retrieval analysis data from raw results"""
     try:
-        return pd.read_csv(BASE_PATH / "tabel_3_9_retrieval.csv")
+        # Load raw results
+        df = pd.read_csv(BASE_PATH / "retrieval_results_raw.csv")
+        
+        # Calculate dynamic sigmoid scores first (0-100% scale for display)
+        import numpy as np
+        df["rerank_sigmoid"] = 1 / (1 + np.exp(-df["rerank_avg_score"]))
+        df["rerank_top1_sigmoid"] = 1 / (1 + np.exp(-df["rerank_top1"]))
+        
+        # Aggregate by Subject
+        agg_df = df.groupby("mata_kuliah").agg({
+            "rerank_sigmoid": "mean",
+            "rerank_top1_sigmoid": "mean", 
+            "total_time_ms": "mean",
+            "query": "count"
+        }).reset_index()
+        
+        # Rename columns to match the UI expectations (but using % scale now)
+        agg_df.columns = ["Mata Kuliah", "Relevance Score (avg)", "Top-1 Score (avg)", "Avg Response Time (ms)", "Jumlah Query"]
+        
+        # Convert to percentage for display consistency (0-1 -> 0-100)
+        agg_df["Relevance Score (avg)"] = agg_df["Relevance Score (avg)"] * 100
+        agg_df["Top-1 Score (avg)"] = agg_df["Top-1 Score (avg)"] * 100
+        
+        return agg_df
     except Exception as e:
         st.error(f"Error loading retrieval data: {e}")
         return pd.DataFrame()
@@ -666,11 +689,11 @@ def main():
         if not retrieval_data.empty:
             st.dataframe(
                 retrieval_data.style.format({
-                    "Relevance Score (avg)": "{:.2f}",
-                    "Top-1 Score (avg)": "{:.2f}",
+                    "Relevance Score (avg)": "{:.1f}%",
+                    "Top-1 Score (avg)": "{:.1f}%",
                     "Avg Response Time (ms)": "{:.0f}"
                 }).background_gradient(
-                    cmap="Blues", subset=["Relevance Score (avg)", "Top-1 Score (avg)"], vmin=0, vmax=5
+                    cmap="Blues", subset=["Relevance Score (avg)", "Top-1 Score (avg)"], vmin=0, vmax=100
                 ),
                 use_container_width=True,
                 hide_index=True
