@@ -450,11 +450,10 @@ def main():
         if not retrieval_data.empty:
             st.dataframe(
                 retrieval_data.style.format({
-                    "Relevance Score (avg)": "{:.2f}",
-                    "Top-1 Score (avg)": "{:.2f}",
-                    "Avg Response Time (ms)": "{:.0f}"
+                    "P(relevant)": "{:.2f}%",
+                    "Response Time (ms)": "{:.0f}"
                 }).background_gradient(
-                    cmap="Greens", subset=["Relevance Score (avg)", "Top-1 Score (avg)"], vmin=0, vmax=5
+                    cmap="Greens", subset=["P(relevant)"], vmin=0, vmax=100
                 ),
                 use_container_width=True,
                 hide_index=True
