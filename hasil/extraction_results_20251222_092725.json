@@ -1,0 +1,1022 @@
+[
+  {
+    "filename": "Bab 1 _ Data Definition Language.docx",
+    "format": "DOCX",
+    "file_size_kb": 423.3251953125,
+    "characters": 10500,
+    "words": 1419,
+    "extraction_time_ms": 74.78,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 1 Activity.docx",
+    "format": "DOCX",
+    "file_size_kb": 381.361328125,
+    "characters": 11784,
+    "words": 1574,
+    "extraction_time_ms": 44.9,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 1 Git & Github.docx",
+    "format": "DOCX",
+    "file_size_kb": 6565.5048828125,
+    "characters": 17852,
+    "words": 2536,
+    "extraction_time_ms": 108.47,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 1. Modul .docx",
+    "format": "DOCX",
+    "file_size_kb": 117.2734375,
+    "characters": 14230,
+    "words": 1826,
+    "extraction_time_ms": 90.63,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 2 - Class dan Objek.docx",
+    "format": "DOCX",
+    "file_size_kb": 407.7138671875,
+    "characters": 1669,
+    "words": 237,
+    "extraction_time_ms": 28.71,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 2 _ Framework CSS (Tailwind).docx",
+    "format": "DOCX",
+    "file_size_kb": 981.671875,
+    "characters": 19530,
+    "words": 2442,
+    "extraction_time_ms": 156.46,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 2 _ Query Dasar.docx",
+    "format": "DOCX",
+    "file_size_kb": 767.375,
+    "characters": 4563,
+    "words": 665,
+    "extraction_time_ms": 43.0,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 2 Intent.docx",
+    "format": "DOCX",
+    "file_size_kb": 545.181640625,
+    "characters": 7994,
+    "words": 835,
+    "extraction_time_ms": 69.14,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 3 _ Data Manipulation Language (DML).docx",
+    "format": "DOCX",
+    "file_size_kb": 480.9365234375,
+    "characters": 6820,
+    "words": 996,
+    "extraction_time_ms": 37.74,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 3 Condition.docx",
+    "format": "DOCX",
+    "file_size_kb": 884.119140625,
+    "characters": 5245,
+    "words": 737,
+    "extraction_time_ms": 38.85,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 3 RecyclerView.docx",
+    "format": "DOCX",
+    "file_size_kb": 292.5869140625,
+    "characters": 10164,
+    "words": 828,
+    "extraction_time_ms": 80.37,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 3. Attribute, Behavior dan Constructor-2.docx",
+    "format": "DOCX",
+    "file_size_kb": 1446.3056640625,
+    "characters": 8124,
+    "words": 1080,
+    "extraction_time_ms": 57.14,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 4 - Encapsulation.docx",
+    "format": "DOCX",
+    "file_size_kb": 183.546875,
+    "characters": 10152,
+    "words": 1259,
+    "extraction_time_ms": 101.53,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 4 Fragment.docx",
+    "format": "DOCX",
+    "file_size_kb": 546.4833984375,
+    "characters": 14045,
+    "words": 1248,
+    "extraction_time_ms": 67.42,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 4 l OPERATOR.docx",
+    "format": "DOCX",
+    "file_size_kb": 306.7177734375,
+    "characters": 4247,
+    "words": 590,
+    "extraction_time_ms": 32.07,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 4 Looping.docx",
+    "format": "DOCX",
+    "file_size_kb": 43.126953125,
+    "characters": 6256,
+    "words": 892,
+    "extraction_time_ms": 39.71,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 5 - Server Side Programming.docx",
+    "format": "DOCX",
+    "file_size_kb": 20.1171875,
+    "characters": 6442,
+    "words": 851,
+    "extraction_time_ms": 33.97,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 5 _ Relationship dan Join.docx",
+    "format": "DOCX",
+    "file_size_kb": 994.3203125,
+    "characters": 7140,
+    "words": 1022,
+    "extraction_time_ms": 41.19,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 5 Background Thread.docx",
+    "format": "DOCX",
+    "file_size_kb": 4131.66015625,
+    "characters": 3351,
+    "words": 455,
+    "extraction_time_ms": 45.43,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 6 _ Function & Grouping.docx",
+    "format": "DOCX",
+    "file_size_kb": 503.1484375,
+    "characters": 10554,
+    "words": 1528,
+    "extraction_time_ms": 55.01,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 6 Networking.docx",
+    "format": "DOCX",
+    "file_size_kb": 226.982421875,
+    "characters": 13772,
+    "words": 1354,
+    "extraction_time_ms": 62.62,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 6. Modul.docx",
+    "format": "DOCX",
+    "file_size_kb": 42.1904296875,
+    "characters": 5436,
+    "words": 642,
+    "extraction_time_ms": 36.82,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 7 _ Subquery.docx",
+    "format": "DOCX",
+    "file_size_kb": 791.806640625,
+    "characters": 6538,
+    "words": 924,
+    "extraction_time_ms": 33.73,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 7 SharedPreferences.docx",
+    "format": "DOCX",
+    "file_size_kb": 16.9453125,
+    "characters": 14125,
+    "words": 1129,
+    "extraction_time_ms": 95.16,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 8 _ UNION,INTERSECT & EXCEPT.docx",
+    "format": "DOCX",
+    "file_size_kb": 882.94921875,
+    "characters": 4708,
+    "words": 668,
+    "extraction_time_ms": 51.53,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 8 SQLite.docx",
+    "format": "DOCX",
+    "file_size_kb": 230.4208984375,
+    "characters": 2680,
+    "words": 348,
+    "extraction_time_ms": 40.81,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 9 _ Laravel MVC 2_ Relasi Eloquent dan CRUD Lanjutan.docx",
+    "format": "DOCX",
+    "file_size_kb": 793.8046875,
+    "characters": 10627,
+    "words": 1382,
+    "extraction_time_ms": 73.47,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 9 _ Transaction, Index & Control Flow.docx",
+    "format": "DOCX",
+    "file_size_kb": 420.1328125,
+    "characters": 5116,
+    "words": 677,
+    "extraction_time_ms": 36.73,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 10 _ Laravel Authentication, Authorization, and Middleware - Praktikum Web 2025.docx",
+    "format": "DOCX",
+    "file_size_kb": 6647.90625,
+    "characters": 13106,
+    "words": 1747,
+    "extraction_time_ms": 72.37,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB V - Inheritance.docx",
+    "format": "DOCX",
+    "file_size_kb": 1286.638671875,
+    "characters": 4837,
+    "words": 659,
+    "extraction_time_ms": 44.24,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB V. Function, Error Handling & RegEx.docx",
+    "format": "DOCX",
+    "file_size_kb": 689.205078125,
+    "characters": 10928,
+    "words": 1494,
+    "extraction_time_ms": 62.66,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB VI OOP_Pertemuan 1.docx",
+    "format": "DOCX",
+    "file_size_kb": 1834.0439453125,
+    "characters": 5700,
+    "words": 738,
+    "extraction_time_ms": 47.5,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB VI OOP_Pertemuan 2.docx",
+    "format": "DOCX",
+    "file_size_kb": 958.78125,
+    "characters": 9478,
+    "words": 1208,
+    "extraction_time_ms": 84.61,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB VIII - Thread.docx",
+    "format": "DOCX",
+    "file_size_kb": 46.279296875,
+    "characters": 10292,
+    "words": 1318,
+    "extraction_time_ms": 72.92,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Data Types, Collection & Operator.docx",
+    "format": "DOCX",
+    "file_size_kb": 463.9228515625,
+    "characters": 3501,
+    "words": 473,
+    "extraction_time_ms": 39.17,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Modul Polymorphism (Revisi).docx",
+    "format": "DOCX",
+    "file_size_kb": 1224.408203125,
+    "characters": 2706,
+    "words": 346,
+    "extraction_time_ms": 35.72,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 1 _ HTML and CSS - Pemrograman Web 2025.docx (1).docx",
+    "format": "DOCX",
+    "file_size_kb": 1236.4931640625,
+    "characters": 18390,
+    "words": 2440,
+    "extraction_time_ms": 103.86,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 3 _ JavaScript as Brain - Pemrograman Web 2025.docx",
+    "format": "DOCX",
+    "file_size_kb": 208.2802734375,
+    "characters": 16672,
+    "words": 2237,
+    "extraction_time_ms": 98.41,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 4 _ JavaScript DOM - Pemrograman Web 2025.docx",
+    "format": "DOCX",
+    "file_size_kb": 115.08203125,
+    "characters": 5021,
+    "words": 660,
+    "extraction_time_ms": 48.99,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 6 _Database Connection - Pemgrograman Web 2025.docx",
+    "format": "DOCX",
+    "file_size_kb": 126.427734375,
+    "characters": 11143,
+    "words": 1350,
+    "extraction_time_ms": 91.03,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 7 - Introduction to Laravel (Framework PHP) - Pemrograman Web 2025.docx",
+    "format": "DOCX",
+    "file_size_kb": 1859.9052734375,
+    "characters": 12413,
+    "words": 1628,
+    "extraction_time_ms": 54.06,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 8 - Laravel MVC 1 - Pemrograman Web 2025.docx",
+    "format": "DOCX",
+    "file_size_kb": 140.1923828125,
+    "characters": 35020,
+    "words": 3062,
+    "extraction_time_ms": 451.11,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 1 Activity.pdf",
+    "format": "PDF",
+    "file_size_kb": 711.669921875,
+    "characters": 12702,
+    "words": 1716,
+    "extraction_time_ms": 284.44,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 1 Git & Github.pdf",
+    "format": "PDF",
+    "file_size_kb": 7537.1318359375,
+    "characters": 19953,
+    "words": 2836,
+    "extraction_time_ms": 340.18,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 1. Modul .pdf",
+    "format": "PDF",
+    "file_size_kb": 742.658203125,
+    "characters": 21476,
+    "words": 2838,
+    "extraction_time_ms": 1162.28,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 2 - Class dan Objek.pdf",
+    "format": "PDF",
+    "file_size_kb": 263.1884765625,
+    "characters": 1683,
+    "words": 237,
+    "extraction_time_ms": 45.84,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 3 Condition.pdf",
+    "format": "PDF",
+    "file_size_kb": 1013.7109375,
+    "characters": 7000,
+    "words": 770,
+    "extraction_time_ms": 188.9,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 4 - Encapsulation.pdf",
+    "format": "PDF",
+    "file_size_kb": 313.5234375,
+    "characters": 12359,
+    "words": 1565,
+    "extraction_time_ms": 548.59,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 4 Looping.pdf",
+    "format": "PDF",
+    "file_size_kb": 240.109375,
+    "characters": 9327,
+    "words": 1179,
+    "extraction_time_ms": 221.7,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 6. Modul.pdf",
+    "format": "PDF",
+    "file_size_kb": 72.5048828125,
+    "characters": 8108,
+    "words": 946,
+    "extraction_time_ms": 246.74,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB V - Inheritance.pdf",
+    "format": "PDF",
+    "file_size_kb": 837.73828125,
+    "characters": 4949,
+    "words": 687,
+    "extraction_time_ms": 112.04,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB V. Function, Error Handling & RegEx.pdf",
+    "format": "PDF",
+    "file_size_kb": 736.1435546875,
+    "characters": 17751,
+    "words": 2170,
+    "extraction_time_ms": 572.08,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB VI OOP_Pertemuan 2.pdf",
+    "format": "PDF",
+    "file_size_kb": 1217.900390625,
+    "characters": 11353,
+    "words": 1271,
+    "extraction_time_ms": 237.22,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB VIII - Thread.pdf",
+    "format": "PDF",
+    "file_size_kb": 292.35546875,
+    "characters": 14080,
+    "words": 1540,
+    "extraction_time_ms": 306.02,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Data Types, Collection & Operator.pdf",
+    "format": "PDF",
+    "file_size_kb": 598.5234375,
+    "characters": 7348,
+    "words": 1011,
+    "extraction_time_ms": 241.39,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Modul Polymorphism (Revisi).pdf",
+    "format": "PDF",
+    "file_size_kb": 710.681640625,
+    "characters": 3283,
+    "words": 357,
+    "extraction_time_ms": 121.14,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 1 _ HTML and CSS - Pemrograman Web 2025.docx (1).pdf",
+    "format": "PDF",
+    "file_size_kb": 1475.83984375,
+    "characters": 26468,
+    "words": 2998,
+    "extraction_time_ms": 619.31,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 4 _ JavaScript DOM - Pemrograman Web 2025.pdf",
+    "format": "PDF",
+    "file_size_kb": 483.154296875,
+    "characters": 10002,
+    "words": 1026,
+    "extraction_time_ms": 284.17,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 6 _Database Connection - Pemgrograman Web 2025.pdf",
+    "format": "PDF",
+    "file_size_kb": 567.9345703125,
+    "characters": 15803,
+    "words": 1731,
+    "extraction_time_ms": 535.78,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 8 - Laravel MVC 1 - Pemrograman Web 2025.pdf",
+    "format": "PDF",
+    "file_size_kb": 486.439453125,
+    "characters": 49906,
+    "words": 3472,
+    "extraction_time_ms": 1109.84,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 1 _ Data Definition Language.txt",
+    "format": "TXT",
+    "file_size_kb": 10.3818359375,
+    "characters": 10500,
+    "words": 1419,
+    "extraction_time_ms": 11.56,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 1 Activity.txt",
+    "format": "TXT",
+    "file_size_kb": 11.6142578125,
+    "characters": 11784,
+    "words": 1574,
+    "extraction_time_ms": 10.93,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 1 Git & Github.txt",
+    "format": "TXT",
+    "file_size_kb": 20.123046875,
+    "characters": 19953,
+    "words": 2836,
+    "extraction_time_ms": 10.05,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 1. Modul .txt",
+    "format": "TXT",
+    "file_size_kb": 21.7841796875,
+    "characters": 21476,
+    "words": 2838,
+    "extraction_time_ms": 10.6,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 2 - Class dan Objek.txt",
+    "format": "TXT",
+    "file_size_kb": 1.677734375,
+    "characters": 1683,
+    "words": 237,
+    "extraction_time_ms": 10.98,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 2 _ Framework CSS (Tailwind).txt",
+    "format": "TXT",
+    "file_size_kb": 19.3359375,
+    "characters": 19530,
+    "words": 2442,
+    "extraction_time_ms": 24.69,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 2 _ Query Dasar.txt",
+    "format": "TXT",
+    "file_size_kb": 4.5078125,
+    "characters": 4563,
+    "words": 665,
+    "extraction_time_ms": 9.46,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 2 Intent.txt",
+    "format": "TXT",
+    "file_size_kb": 7.955078125,
+    "characters": 7994,
+    "words": 835,
+    "extraction_time_ms": 11.42,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 3 _ Data Manipulation Language (DML).txt",
+    "format": "TXT",
+    "file_size_kb": 6.71484375,
+    "characters": 6820,
+    "words": 996,
+    "extraction_time_ms": 11.97,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 3 Condition.txt",
+    "format": "TXT",
+    "file_size_kb": 7.7119140625,
+    "characters": 7000,
+    "words": 770,
+    "extraction_time_ms": 10.84,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 3 RecyclerView.txt",
+    "format": "TXT",
+    "file_size_kb": 10.1474609375,
+    "characters": 10164,
+    "words": 828,
+    "extraction_time_ms": 13.8,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 3. Attribute, Behavior dan Constructor-2.txt",
+    "format": "TXT",
+    "file_size_kb": 8.009765625,
+    "characters": 8124,
+    "words": 1080,
+    "extraction_time_ms": 11.12,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 4 - Encapsulation.txt",
+    "format": "TXT",
+    "file_size_kb": 12.4619140625,
+    "characters": 12359,
+    "words": 1565,
+    "extraction_time_ms": 11.54,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 4 Fragment.txt",
+    "format": "TXT",
+    "file_size_kb": 14.033203125,
+    "characters": 14045,
+    "words": 1248,
+    "extraction_time_ms": 11.79,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 4 l OPERATOR.txt",
+    "format": "TXT",
+    "file_size_kb": 4.25,
+    "characters": 4247,
+    "words": 590,
+    "extraction_time_ms": 8.88,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 4 Looping.txt",
+    "format": "TXT",
+    "file_size_kb": 10.2607421875,
+    "characters": 9327,
+    "words": 1179,
+    "extraction_time_ms": 9.92,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 5 - Server Side Programming.txt",
+    "format": "TXT",
+    "file_size_kb": 6.3818359375,
+    "characters": 6442,
+    "words": 851,
+    "extraction_time_ms": 12.24,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 5 _ Relationship dan Join.txt",
+    "format": "TXT",
+    "file_size_kb": 7.0302734375,
+    "characters": 7140,
+    "words": 1022,
+    "extraction_time_ms": 8.87,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 5 Background Thread.txt",
+    "format": "TXT",
+    "file_size_kb": 3.35546875,
+    "characters": 3351,
+    "words": 455,
+    "extraction_time_ms": 9.92,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 6 _ Function & Grouping.txt",
+    "format": "TXT",
+    "file_size_kb": 10.482421875,
+    "characters": 10554,
+    "words": 1528,
+    "extraction_time_ms": 10.03,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 6 Networking.txt",
+    "format": "TXT",
+    "file_size_kb": 13.779296875,
+    "characters": 13772,
+    "words": 1354,
+    "extraction_time_ms": 11.39,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 6. Modul.txt",
+    "format": "TXT",
+    "file_size_kb": 8.189453125,
+    "characters": 8108,
+    "words": 946,
+    "extraction_time_ms": 10.35,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 7 _ Subquery.txt",
+    "format": "TXT",
+    "file_size_kb": 6.4267578125,
+    "characters": 6538,
+    "words": 924,
+    "extraction_time_ms": 10.16,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 7 SharedPreferences.txt",
+    "format": "TXT",
+    "file_size_kb": 14.013671875,
+    "characters": 14125,
+    "words": 1129,
+    "extraction_time_ms": 12.01,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 8 _ UNION,INTERSECT & EXCEPT.txt",
+    "format": "TXT",
+    "file_size_kb": 4.646484375,
+    "characters": 4708,
+    "words": 668,
+    "extraction_time_ms": 11.6,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 8 SQLite.txt",
+    "format": "TXT",
+    "file_size_kb": 2.640625,
+    "characters": 2680,
+    "words": 348,
+    "extraction_time_ms": 10.46,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 9 _ Laravel MVC 2_ Relasi Eloquent dan CRUD Lanjutan.txt",
+    "format": "TXT",
+    "file_size_kb": 10.5029296875,
+    "characters": 10627,
+    "words": 1382,
+    "extraction_time_ms": 10.11,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB 9 _ Transaction, Index & Control Flow.txt",
+    "format": "TXT",
+    "file_size_kb": 5.0390625,
+    "characters": 5116,
+    "words": 677,
+    "extraction_time_ms": 9.34,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Bab 10 _ Laravel Authentication, Authorization, and Middleware - Praktikum Web 2025.txt",
+    "format": "TXT",
+    "file_size_kb": 13.181640625,
+    "characters": 13106,
+    "words": 1747,
+    "extraction_time_ms": 10.21,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB V - Inheritance.txt",
+    "format": "TXT",
+    "file_size_kb": 5.0185546875,
+    "characters": 4949,
+    "words": 687,
+    "extraction_time_ms": 9.37,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB V. Function, Error Handling & RegEx.txt",
+    "format": "TXT",
+    "file_size_kb": 19.2109375,
+    "characters": 17751,
+    "words": 2170,
+    "extraction_time_ms": 15.06,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB VI OOP_Pertemuan 1.txt",
+    "format": "TXT",
+    "file_size_kb": 5.6240234375,
+    "characters": 5700,
+    "words": 738,
+    "extraction_time_ms": 12.17,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB VI OOP_Pertemuan 2.txt",
+    "format": "TXT",
+    "file_size_kb": 12.3017578125,
+    "characters": 11353,
+    "words": 1271,
+    "extraction_time_ms": 12.7,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "BAB VIII - Thread.txt",
+    "format": "TXT",
+    "file_size_kb": 14.32421875,
+    "characters": 14080,
+    "words": 1540,
+    "extraction_time_ms": 13.8,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Data Types, Collection & Operator.txt",
+    "format": "TXT",
+    "file_size_kb": 7.595703125,
+    "characters": 7348,
+    "words": 1011,
+    "extraction_time_ms": 13.68,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Modul Polymorphism (Revisi).txt",
+    "format": "TXT",
+    "file_size_kb": 3.57421875,
+    "characters": 3283,
+    "words": 357,
+    "extraction_time_ms": 13.85,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 1 _ HTML and CSS - Pemrograman Web 2025.docx (1).txt",
+    "format": "TXT",
+    "file_size_kb": 28.478515625,
+    "characters": 26468,
+    "words": 2998,
+    "extraction_time_ms": 14.41,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 3 _ JavaScript as Brain - Pemrograman Web 2025.txt",
+    "format": "TXT",
+    "file_size_kb": 16.5849609375,
+    "characters": 16672,
+    "words": 2237,
+    "extraction_time_ms": 19.79,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 4 _ JavaScript DOM - Pemrograman Web 2025.txt",
+    "format": "TXT",
+    "file_size_kb": 10.390625,
+    "characters": 10002,
+    "words": 1026,
+    "extraction_time_ms": 146.43,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 6 _Database Connection - Pemgrograman Web 2025.txt",
+    "format": "TXT",
+    "file_size_kb": 16.123046875,
+    "characters": 15803,
+    "words": 1731,
+    "extraction_time_ms": 137.57,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 7 - Introduction to Laravel (Framework PHP) - Pemrograman Web 2025.txt",
+    "format": "TXT",
+    "file_size_kb": 12.365234375,
+    "characters": 12413,
+    "words": 1628,
+    "extraction_time_ms": 10.3,
+    "success": true,
+    "error": null
+  },
+  {
+    "filename": "Pertemuan 8 - Laravel MVC 1 - Pemrograman Web 2025.txt",
+    "format": "TXT",
+    "file_size_kb": 49.2080078125,
+    "characters": 49906,
+    "words": 3472,
+    "extraction_time_ms": 17.09,
+    "success": true,
+    "error": null
+  }
+]

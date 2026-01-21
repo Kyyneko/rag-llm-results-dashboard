@@ -1,0 +1,27 @@
+﻿,filename,mata_kuliah,topic,difficulty,extraction_ms,chunking_ms,embedding_ms,retrieval_ms,llm_ms,total_ms,num_chunks,num_contexts,structure_score,has_soal,has_requirements,has_expected_output,has_kunci,output_length,success
+0,"BAB 9 _ Transaction, Index & Control Flow.docx",Basis Data,"Transaction, Index & Control Flow",Sedang,41.49,0.2,232.5,60.77,27207.34,27548.58,4,1,1,true,true,true,true,2659,true
+1,BAB 4 l OPERATOR.docx,Basis Data,Operator,Sedang,46.02,0.18,172.96,31.46,31989.16,32247.55,4,1,1,true,true,true,true,5029,true
+2,Bab 2 _ Query Dasar.docx,Basis Data,Query Dasar,Sedang,48.32,0.11,189.85,17.64,40009.26,40269.89,4,0,1,true,true,true,true,5418,true
+3,"BAB 8 _ UNION,INTERSECT & EXCEPT.docx",Basis Data,"Union, Intersect & Except",Sulit,46.77,0.22,181.13,27.8,57658.68,57921.66,4,1,1,true,true,true,true,6877,true
+4,BAB 7 _ Subquery.docx,Basis Data,Subquery,Sedang,45.91,0.23,248.35,31.4,34582.05,34915.42,5,0,1,true,true,true,true,4388,true
+5,Bab 4 - Encapsulation.pdf,OOP Java,Encapsulation,Sedang,446.17,0.18,217.98,33.99,112781.42,113484.79,11,0,1,true,true,true,true,5827,true
+6,BAB VIII - Thread.pdf,OOP Java,Thread,Sulit,343.14,0.29,262.39,47.57,45854.74,46513.58,12,1,1,true,true,true,true,6779,true
+7,Modul Polymorphism (Revisi).pdf,OOP Java,Polymorphism,Mudah,143.71,0.06,163.89,70.05,26865.9,27248.92,3,1,1,true,true,true,true,1775,true
+8,BAB V - Inheritance.pdf,OOP Java,Inheritance,Mudah,117.43,0.03,222.63,31.16,29531.68,29908,5,2,1,true,true,true,true,3427,true
+9,BAB 2 - Class dan Objek.pdf,OOP Java,Class dan Objek,Mudah,53.77,0.01,119.49,51.26,25038.19,25266.75,2,2,1,true,true,true,true,1972,true
+10,BAB 2 - Class dan Objek.pdf,OOP Java,Class dan Objek,Sulit,52.48,0.01,121.84,47.87,36229.01,36455.71,2,2,1,true,true,true,true,5982,true
+11,Bab 7 SharedPreferences.docx,Pemrograman Mobile,SharedPreferences,Sedang,94.15,0.53,202.74,33.01,34367.44,34704.27,9,2,1,true,true,true,true,5021,true
+12,Bab 7 SharedPreferences.docx,Pemrograman Mobile,SharedPreferences,Sulit,84.27,0.39,223.22,68.23,28751.92,29140.76,9,2,1,true,true,true,true,9574,true
+13,Bab 1 Activity.docx,Pemrograman Mobile,Activity,Sedang,54.25,0.49,233.18,43.81,31100.18,31437.49,9,0,1,true,true,true,true,8207,true
+14,Bab 6 Networking.docx,Pemrograman Mobile,Networking,Sedang,120.51,0.23,325.08,31.32,21907.08,22391.04,10,1,1,true,true,true,true,6068,true
+15,Bab 8 SQLite.docx,Pemrograman Mobile,SQLite,Sedang,44.64,0.15,89.36,42.7,23326.5,23509.16,2,0,1,true,true,true,true,7505,true
+16,Bab 4 Looping.pdf,Algoritma dan Pemrograman,Looping,Sulit,305.27,0.21,255.95,32.18,18507.88,19106.63,7,1,1,true,true,true,true,3456,true
+17,"Data Types, Collection & Operator.pdf",Algoritma dan Pemrograman,"Data Types, Collection & Operator",Sedang,273.48,0.15,220.02,31.03,35514.84,36045.69,7,3,1,true,true,true,true,3367,true
+18,Bab 3 Condition.pdf,Algoritma dan Pemrograman,Condition,Sulit,210.15,0.09,264.21,59.99,20450.88,20991.89,5,1,1,true,true,true,true,4764,true
+19,"BAB V. Function, Error Handling & RegEx.pdf",Algoritma dan Pemrograman,"Function, Error Handling & RegEx",Mudah,427.57,0.3,297.15,37.97,22854.05,23621.48,14,3,1,true,true,true,true,2257,true
+20,"BAB V. Function, Error Handling & RegEx.pdf",Algoritma dan Pemrograman,"Function, Error Handling & RegEx",Sulit,418.05,0.39,349.97,77.67,21404.05,22256.91,14,3,1,true,true,true,true,6409,true
+21,Pertemuan 1 _ HTML and CSS - Pemrograman Web 2025.docx (1).pdf,Pemrograman Website,HTML and CSS,Sedang,656.61,0.48,312.09,50.5,18038.71,19062.88,24,1,1,true,true,true,true,4059,true
+22,Pertemuan 4 _ JavaScript DOM - Pemrograman Web 2025.pdf,Pemrograman Website,JavaScript DOM,Mudah,306.37,0.22,314.33,36.68,15163.5,15826.47,8,0,1,true,true,true,true,3024,true
+23,Pertemuan 3 _ JavaScript as Brain - Pemrograman Web 2025.docx,Pemrograman Website,JavaScript as Brain,Sedang,111.69,0.32,305.32,35.4,24843,25299.52,13,1,1,true,true,true,true,5045,true
+24,"Bab 10 _ Laravel Authentication, Authorization, and Middleware - Praktikum Web 2025.docx",Pemrograman Website,"Laravel Authentication, Authorization, and Middleware",Sulit,82.31,0.34,327.06,39.61,22503.33,22961.61,10,3,1,true,true,true,true,7035,true
+25,Pertemuan 6 _Database Connection - Pemgrograman Web 2025.pdf,Pemrograman Website,Database Connection,Mudah,423.76,0.31,338.11,38.28,18092.37,18898.17,12,0,1,true,true,true,true,2246,true
