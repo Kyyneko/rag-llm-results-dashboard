@@ -230,23 +230,58 @@ def load_retrieval_data():
             "query": "count"
         }).reset_index()
         
-        # Rename columns to match the UI expectations (but using % scale now)
-        agg_df.columns = ["Mata Kuliah", "Relevance Score (avg)", "Top-1 Score (avg)", "Avg Response Time (ms)", "Jumlah Query"]
+        # Rename columns to match the UI expectations
+        agg_df.columns = ["Mata Kuliah", "P(relevant)", "Top-1 Score (avg)", "Response Time (ms)", "Jumlah Query"]
         
         # Convert to percentage for display consistency (0-1 -> 0-100)
-        agg_df["Relevance Score (avg)"] = agg_df["Relevance Score (avg)"] * 100
+        agg_df["P(relevant)"] = agg_df["P(relevant)"] * 100
         agg_df["Top-1 Score (avg)"] = agg_df["Top-1 Score (avg)"] * 100
         
-        return agg_df
+        return agg_df[["Mata Kuliah", "P(relevant)", "Response Time (ms)"]]
     except Exception as e:
         st.error(f"Error loading retrieval data: {e}")
         return pd.DataFrame()
 
 @st.cache_data
+@st.cache_data
 def load_rag_effectiveness():
-    """Load RAG effectiveness summary"""
+    """Load RAG effectiveness summary from raw results"""
     try:
-        return pd.read_csv(BASE_PATH / "rag_effectiveness_summary.csv")
+        # Load and process raw data
+        df = pd.read_csv(BASE_PATH / "retrieval_results_raw.csv")
+        import numpy as np
+        
+        # Calculate dynamic sigmoid scores
+        df["rerank_sigmoid"] = 1 / (1 + np.exp(-df["rerank_avg_score"]))
+        df["rerank_top1_sigmoid"] = 1 / (1 + np.exp(-df["rerank_top1"]))
+        
+        # Calculate summary metrics
+        total = len(df)
+        avg_top_k = df["rerank_sigmoid"].mean()
+        avg_top_1 = df["rerank_top1_sigmoid"].mean()
+        success_70 = len(df[df["rerank_top1_sigmoid"] >= 0.7]) / total * 100
+        success_50 = len(df[df["rerank_top1_sigmoid"] >= 0.5]) / total * 100
+        avg_time = df["total_time_ms"].mean()
+        
+        # Create summary dataframe with new labels
+        summary_data = {
+            "Metrik": [
+                "Avg P(relevant) - Top-K",
+                "Avg P(relevant) - Top-1", 
+                "Success Rate (P ≥ 70%)",
+                "Success Rate (P ≥ 50%)",
+                "Avg Response Time (ms)"
+            ],
+            "Nilai": [
+                f"{avg_top_k:.4f} ({avg_top_k*100:.1f}%)",
+                f"{avg_top_1:.4f} ({avg_top_1*100:.1f}%)",
+                f"{success_70:.0f}%",
+                f"{success_50:.0f}%",
+                f"{avg_time:.2f} ms"
+            ]
+        }
+        
+        return pd.DataFrame(summary_data)
     except Exception as e:
         st.error(f"Error loading RAG effectiveness: {e}")
         return pd.DataFrame()
@@ -689,18 +724,17 @@ def main():
         if not retrieval_data.empty:
             st.dataframe(
                 retrieval_data.style.format({
-                    "Relevance Score (avg)": "{:.1f}%",
-                    "Top-1 Score (avg)": "{:.1f}%",
-                    "Avg Response Time (ms)": "{:.0f}"
+                    "P(relevant)": "{:.1f}%",
+                    "Response Time (ms)": "{:.0f}"
                 }).background_gradient(
-                    cmap="Blues", subset=["Relevance Score (avg)", "Top-1 Score (avg)"], vmin=0, vmax=100
+                    cmap="Blues", subset=["P(relevant)"], vmin=0, vmax=100
                 ),
                 use_container_width=True,
                 hide_index=True
             )
             
             st.bar_chart(
-                retrieval_data.set_index("Mata Kuliah")[["Relevance Score (avg)", "Top-1 Score (avg)"]]
+                retrieval_data.set_index("Mata Kuliah")[["P(relevant)"]]
             )
         
         st.markdown("---")
@@ -736,15 +770,15 @@ def main():
             # Prepare display dataframe
             display_df = filtered_sigmoid.copy()
             display_df["FAISS"] = display_df["faiss_sigmoid"].round(2)
-            display_df["Rerank %"] = (display_df["rerank_sigmoid"] * 100).round(1).astype(str) + "%"
-            display_df["Top-1 %"] = (display_df["rerank_top1_sigmoid"] * 100).round(1).astype(str) + "%"
+            display_df["P(relevant)"] = (display_df["rerank_sigmoid"] * 100).round(1).astype(str) + "%"
+            display_df["P(relevant) Top-1"] = (display_df["rerank_top1_sigmoid"] * 100).round(1).astype(str) + "%"
             
             # Shorten query text for display
             display_df["Query"] = display_df["query"].str[:50] + "..."
             
             # Display table
-            display_table = display_df[["mata_kuliah", "Query", "FAISS", "Rerank %", "Top-1 %"]].copy()
-            display_table.columns = ["Mata Kuliah", "Query", "FAISS", "Rerank %", "Top-1 %"]
+            display_table = display_df[["mata_kuliah", "Query", "FAISS", "P(relevant)", "P(relevant) Top-1"]].copy()
+            display_table.columns = ["Mata Kuliah", "Query", "FAISS", "P(relevant)", "P(relevant) Top-1"]
             
             st.dataframe(
                 display_table,
