@@ -588,18 +588,41 @@ def main():
         st.markdown("### 📝 100 Query Test untuk Evaluasi RAG")
         st.info("**100 query** (20 per mata kuliah) digunakan untuk menguji efektivitas retrieval RAG system.")
         
-        # Get queries dynamically from the loaded data
-        if not retrieval_data.empty:
+        @st.cache_data
+        def load_queries_from_md():
+            """Load queries from Daftar_Query_Evaluasi.md"""
+            queries = {}
+            current_subject = None
             try:
-                # We need the full dataframe for queries, not just the aggregated one.
-                # So we'll load the raw data specifically for this view
-                raw_df = pd.read_csv(BASE_PATH / "Raw_Data_Retrieval.csv")
-                # Group by subject and get unique queries
-                queries = raw_df.groupby("mata_kuliah")["query"].unique().apply(list).to_dict()
+                md_path = BASE_PATH / "Daftar_Query_Evaluasi.md"
+                if not md_path.exists():
+                    return {}
+                
+                with open(md_path, "r", encoding="utf-8") as f:
+                    lines = f.readlines()
+                
+                for line in lines:
+                    line = line.strip()
+                    if line.startswith("## 📚"):
+                        # Extract subject name: "## 📚 Algoritma dan Pemrograman (20 Query)" -> "Algoritma dan Pemrograman"
+                        parts = line.replace("## 📚", "").strip().split("(")
+                        current_subject = parts[0].strip()
+                        queries[current_subject] = []
+                    elif line and line[0].isdigit() and ". " in line and current_subject:
+                        # Extract query: "1. Query text" -> "Query text"
+                        query_text = line.split(". ", 1)[1].strip()
+                        queries[current_subject].append(query_text)
+                        
+                return queries
             except Exception as e:
-                st.warning(f"Gagal memuat detail query: {e}")
-                queries = {}
-        else:
+                st.warning(f"Gagal memuat daftar query: {e}")
+                return {}
+
+        # Load queries from MD file
+        queries = load_queries_from_md()
+        
+        # Fallback if empty (prevent errors)
+        if not queries:
             queries = {}
         
         # Display queries per subject
