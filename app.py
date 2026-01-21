@@ -463,9 +463,6 @@ def main():
     # ==================== EVALUASI EXPERT ====================
     elif section == "📋 Evaluasi Expert":
         st.markdown("## 📋 Hasil Evaluasi Expert")
-        
-
-
         st.info("**9 evaluator** melakukan evaluasi terhadap **26 sampel soal** yang dihasilkan sistem, menghasilkan **50 evaluasi** total.")
         
         if evaluations:
@@ -662,8 +659,47 @@ def main():
             )
         
         st.markdown("---")
+
+        # Probability Distribution (New Section based on User Request)
+        st.markdown("### 📊 Distribusi Probabilitas Relevansi")
         
-        # Sigmoid Analysis
+        if not sigmoid_data.empty:
+            # Categorize based on Average Sigmoid Score
+            def get_category(score):
+                if score >= 0.90: return "Sangat Relevan (≥ 90%)"
+                elif score >= 0.70: return "Relevan (70-90%)"
+                elif score >= 0.50: return "Cukup Relevan (50-70%)"
+                else: return "Kurang Relevan (< 50%)"
+            
+            # Use 'rerank_sigmoid' which is 0-1
+            dist_series = sigmoid_data["rerank_sigmoid"].apply(get_category)
+            dist_counts = dist_series.value_counts().reindex([
+                "Sangat Relevan (≥ 90%)", 
+                "Relevan (70-90%)", 
+                "Cukup Relevan (50-70%)", 
+                "Kurang Relevan (< 50%)"
+            ], fill_value=0)
+            
+            total_q = len(sigmoid_data)
+            
+            dist_df = pd.DataFrame({
+                "Kategori": dist_counts.index,
+                "Jumlah Query": dist_counts.values,
+                "Persentase": [(x/total_q * 100) for x in dist_counts.values]
+            })
+            
+            # Format Persentase
+            dist_df["Persentase"] = dist_df["Persentase"].map("{:.0f}%".format)
+            
+            col1, col2 = st.columns([2, 1])
+            with col1:
+                st.dataframe(dist_df, use_container_width=True, hide_index=True)
+            with col2:
+                # Simple bar chart
+                chart_data = dist_df.set_index("Kategori")[["Jumlah Query"]]
+                st.bar_chart(chart_data)
+        
+        st.markdown("---")
         st.markdown("### 🔬 Perbandingan Skor Retrieval")
         if not sigmoid_data.empty:
             # Summary metrics - keep as decimal 0-1
