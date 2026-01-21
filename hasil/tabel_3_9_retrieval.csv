@@ -1,6 +1,6 @@
-Mata Kuliah,Jumlah Query,Relevance Score (avg),Top-1 Score (avg),Avg Response Time (ms)
-Algoritma dan Pemrograman,20,3.0947,4.0253,63.55
-Pemrograman Website,20,0.2092,0.2723,61.68
-Basis Data,20,1.4244,2.1003,58.27
-OOP Java,20,2.0596,2.9253,54.17
-Pemrograman Mobile,20,2.0804,3.0022,63.23
+Mata Kuliah,Relevance Score (avg),Top-1 Score (avg),Avg Response Time (ms),Jumlah Query
+Algoritma dan Pemrograman,0.9526059162399876,0.9709473904681882,48.23433333333333,60
+Basis Data,0.8737758429529701,0.9049091889093569,39.66416666666667,60
+OOP Java,0.9556856678286746,0.9794821265452708,38.43216666666667,60
+Pemrograman Mobile,0.9293714814064179,0.9494799672935299,42.03507936507937,63
+Pemrograman Website,0.8562722192846287,0.8865019073571825,40.01883333333333,60
