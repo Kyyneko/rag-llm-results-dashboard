@@ -8,7 +8,22 @@ import streamlit as st
 import pandas as pd
 import json
 import os
+import base64
 from pathlib import Path
+from io import BytesIO
+
+# For reading file content
+try:
+    from PyPDF2 import PdfReader
+    HAS_PDF = True
+except ImportError:
+    HAS_PDF = False
+
+try:
+    from docx import Document
+    HAS_DOCX = True
+except ImportError:
+    HAS_DOCX = False
 
 # Page Configuration
 st.set_page_config(
@@ -371,6 +386,45 @@ def get_modules_from_folder():
 
     return subjects
 
+# ================== FILE READING FUNCTIONS ==================
+
+def read_pdf_content(file_path):
+    """Read text content from PDF file"""
+    if not HAS_PDF:
+        return None
+    try:
+        reader = PdfReader(file_path)
+        text = ""
+        for page in reader.pages:
+            text += page.extract_text() + "\n"
+        return text
+    except Exception as e:
+        return f"Error reading PDF: {str(e)}"
+
+def read_docx_content(file_path):
+    """Read text content from DOCX file"""
+    if not HAS_DOCX:
+        return None
+    try:
+        doc = Document(file_path)
+        text = ""
+        for para in doc.paragraphs:
+            text += para.text + "\n"
+        return text
+    except Exception as e:
+        return f"Error reading DOCX: {str(e)}"
+
+def get_file_download_link(file_path, file_name):
+    """Create a download link for a file"""
+    try:
+        with open(file_path, "rb") as f:
+            file_data = f.read()
+        b64 = base64.b64encode(file_data).decode()
+        href = f'<a href="data:application/octet-stream;base64,{b64}" download="{file_name}" target="_blank">📥 Download / Buka File</a>'
+        return href
+    except Exception as e:
+        return f"Error: {str(e)}"
+
 # ================== MAIN APP ==================
 
 def main():
@@ -572,13 +626,49 @@ def main():
 
                     for idx, module in modules_df.iterrows():
                         with st.expander(f"📄 {module['title']} ({module['extension'].upper()})"):
-                            col1, col2 = st.columns(2)
+                            col1, col2, col3 = st.columns([2, 2, 1])
                             with col1:
                                 st.write(f"**Judul:** {module['title']}")
                                 st.write(f"**Nama File:** {module['file_name']}")
                             with col2:
                                 st.write(f"**Tipe:** {module['extension'].upper()}")
                                 st.write(f"**Ukuran:** {module['size_kb']} KB")
+                            with col3:
+                                # Download/View button
+                                file_path = module['file_path']
+                                download_link = get_file_download_link(file_path, module['file_name'])
+                                st.markdown(download_link, unsafe_allow_html=True)
+
+                            # View content section
+                            ext = module['extension'].lower()
+                            file_path = module['file_path']
+
+                            if ext == '.pdf':
+                                if not HAS_PDF:
+                                    st.info("💡 Install `PyPDF2` untuk membaca PDF: `pip install PyPDF2`")
+                                else:
+                                    if st.button(f"👁️ Lihat Isi PDF", key=f"view_{idx}"):
+                                        with st.spinner("Membaca PDF..."):
+                                            content = read_pdf_content(file_path)
+                                            if content and not content.startswith("Error"):
+                                                st.text_area("Isi PDF:", content, height=300)
+                                            else:
+                                                st.error(content or "Gagal membaca PDF")
+
+                            elif ext == '.docx':
+                                if not HAS_DOCX:
+                                    st.info("💡 Install `python-docx` untuk membaca DOCX: `pip install python-docx`")
+                                else:
+                                    if st.button(f"👁️ Lihat Isi DOCX", key=f"view_{idx}"):
+                                        with st.spinner("Membaca DOCX..."):
+                                            content = read_docx_content(file_path)
+                                            if content and not content.startswith("Error"):
+                                                st.text_area("Isi DOCX:", content, height=300)
+                                            else:
+                                                st.error(content or "Gagal membaca DOCX")
+
+                            else:
+                                st.info(f"📁 Preview tidak tersedia untuk tipe file {ext.upper()}. Silakan download file.")
 
     # ==================== EVALUASI EXPERT ====================
     elif section == "📋 Evaluasi Expert":
