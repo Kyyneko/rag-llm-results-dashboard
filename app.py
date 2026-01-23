@@ -8,22 +8,7 @@ import streamlit as st
 import pandas as pd
 import json
 import os
-import base64
 from pathlib import Path
-from io import BytesIO
-
-# For reading file content
-try:
-    from PyPDF2 import PdfReader
-    HAS_PDF = True
-except ImportError:
-    HAS_PDF = False
-
-try:
-    from docx import Document
-    HAS_DOCX = True
-except ImportError:
-    HAS_DOCX = False
 
 # Page Configuration
 st.set_page_config(
@@ -206,7 +191,6 @@ st.markdown("""
 
 # Determine base path
 BASE_PATH = Path(__file__).parent / "hasil"
-MODULES_PATH = Path(__file__).parent / "Modul Modul Lab SI"
 
 @st.cache_data
 def load_evaluations():
@@ -344,87 +328,6 @@ def calculate_evaluation_stats(evaluations):
         "needs_improvement": len(df[df["overall"] < 3.5]),
     }
 
-# ================== MODULES FROM FOLDER ==================
-
-@st.cache_data
-def get_modules_from_folder():
-    """Load modules from 'Modul Modul Lab SI' folder structure"""
-    subjects = []
-
-    if not MODULES_PATH.exists():
-        return subjects
-
-    # Iterate through subject folders (skip "All Modul" folder)
-    for subject_folder in sorted(MODULES_PATH.iterdir()):
-        if subject_folder.is_dir() and subject_folder.name != "All Modul":
-            # Extract subject name from folder name
-            subject_name = subject_folder.name.replace("Modul ", "").strip()
-
-            # Get all files in subject folder
-            modules = []
-            for file_path in sorted(subject_folder.iterdir()):
-                if file_path.is_file():
-                    # Get file extension and size
-                    file_ext = file_path.suffix
-                    file_size = file_path.stat().st_size / 1024  # KB
-
-                    modules.append({
-                        "title": file_path.stem,  # filename without extension
-                        "file_name": file_path.name,
-                        "file_path": str(file_path),
-                        "extension": file_ext,
-                        "size_kb": round(file_size, 2)
-                    })
-
-            if modules:
-                subjects.append({
-                    "name": subject_name,
-                    "folder": subject_folder.name,
-                    "modules": modules,
-                    "total_modules": len(modules)
-                })
-
-    return subjects
-
-# ================== FILE READING FUNCTIONS ==================
-
-def read_pdf_content(file_path):
-    """Read text content from PDF file"""
-    if not HAS_PDF:
-        return None
-    try:
-        reader = PdfReader(file_path)
-        text = ""
-        for page in reader.pages:
-            text += page.extract_text() + "\n"
-        return text
-    except Exception as e:
-        return f"Error reading PDF: {str(e)}"
-
-def read_docx_content(file_path):
-    """Read text content from DOCX file"""
-    if not HAS_DOCX:
-        return None
-    try:
-        doc = Document(file_path)
-        text = ""
-        for para in doc.paragraphs:
-            text += para.text + "\n"
-        return text
-    except Exception as e:
-        return f"Error reading DOCX: {str(e)}"
-
-def get_file_download_link(file_path, file_name):
-    """Create a download link for a file"""
-    try:
-        with open(file_path, "rb") as f:
-            file_data = f.read()
-        b64 = base64.b64encode(file_data).decode()
-        href = f'<a href="data:application/octet-stream;base64,{b64}" download="{file_name}" target="_blank">📥 Download / Buka File</a>'
-        return href
-    except Exception as e:
-        return f"Error: {str(e)}"
-
 # ================== MAIN APP ==================
 
 def main():
@@ -436,7 +339,7 @@ def main():
     st.sidebar.title("📑 Navigasi")
     section = st.sidebar.radio(
         "Pilih Bagian:",
-        ["🏠 Overview", "📚 Modul Lab SI", "🔍 Efektivitas RAG", "📄 Hasil Generate Soal", "📋 Evaluasi Expert", "📈 Data Mentah"]
+        ["🏠 Overview", "🔍 Efektivitas RAG", "📄 Hasil Generate Soal", "📋 Evaluasi Expert", "📈 Data Mentah"]
     )
 
     # Sidebar info
@@ -537,120 +440,6 @@ def main():
         )
 
         st.info("💡 **Detail data lengkap tersedia di menu Efektivitas RAG**")
-
-    # ==================== MODUL LAB SI ====================
-    elif section == "📚 Modul Lab SI":
-        st.markdown("## 📚 Modul Lab SI")
-
-        # Load modules from folder
-        subjects = get_modules_from_folder()
-
-        if not subjects:
-            st.warning("""
-            **Folder modul tidak ditemukan atau kosong**
-
-            Pastikan folder `Modul Modul Lab SI` ada di lokasi yang sama dengan file `app.py`
-            dan berisi subfolder untuk setiap mata kuliah.
-            """)
-        else:
-            # Display summary metrics
-            total_modules = sum(s["total_modules"] for s in subjects)
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                st.metric("Total Mata Kuliah", len(subjects))
-            with col2:
-                st.metric("Total Modul", total_modules)
-            with col3:
-                # Count by file type
-                file_types = {}
-                for s in subjects:
-                    for m in s["modules"]:
-                        ext = m["extension"].upper()
-                        file_types[ext] = file_types.get(ext, 0) + 1
-                file_type_summary = ", ".join([f"{ext}: {count}" for ext, count in sorted(file_types.items())])
-                st.metric("Tipe File", file_type_summary)
-
-            st.markdown("---")
-
-            # Subject selection
-            subject_options = {s["name"]: s for s in subjects}
-            selected_subject_name = st.selectbox(
-                "Pilih Mata Kuliah:",
-                list(subject_options.keys())
-            )
-
-            if selected_subject_name:
-                selected_subject = subject_options[selected_subject_name]
-                modules = selected_subject["modules"]
-
-                st.markdown(f"### 📖 Modul untuk {selected_subject_name}")
-                st.info(f"📁 Folder: `{selected_subject['folder']}` | Total: {len(modules)} modul")
-
-                if not modules:
-                    st.warning("Tidak ada modul untuk mata kuliah ini.")
-                else:
-                    # Create dataframe for display
-                    modules_df = pd.DataFrame(modules)
-
-                    # Display modules table with file info
-                    display_df = modules_df[["title", "file_name", "extension", "size_kb"]].copy()
-                    display_df.columns = ["Judul Modul", "Nama File", "Tipe", "Ukuran (KB)"]
-
-                    st.dataframe(
-                        display_df,
-                        width="stretch",
-                        hide_index=True
-                    )
-
-                    # Show details with expanders
-                    st.markdown("---")
-                    st.markdown("### 📄 Detail Modul")
-
-                    for idx, module in modules_df.iterrows():
-                        with st.expander(f"📄 {module['title']} ({module['extension'].upper()})"):
-                            col1, col2, col3 = st.columns([2, 2, 1])
-                            with col1:
-                                st.write(f"**Judul:** {module['title']}")
-                                st.write(f"**Nama File:** {module['file_name']}")
-                            with col2:
-                                st.write(f"**Tipe:** {module['extension'].upper()}")
-                                st.write(f"**Ukuran:** {module['size_kb']} KB")
-                            with col3:
-                                # Download/View button
-                                file_path = module['file_path']
-                                download_link = get_file_download_link(file_path, module['file_name'])
-                                st.markdown(download_link, unsafe_allow_html=True)
-
-                            # View content section
-                            ext = module['extension'].lower()
-                            file_path = module['file_path']
-
-                            if ext == '.pdf':
-                                if not HAS_PDF:
-                                    st.info("💡 Install `PyPDF2` untuk membaca PDF: `pip install PyPDF2`")
-                                else:
-                                    if st.button(f"👁️ Lihat Isi PDF", key=f"view_{idx}"):
-                                        with st.spinner("Membaca PDF..."):
-                                            content = read_pdf_content(file_path)
-                                            if content and not content.startswith("Error"):
-                                                st.text_area("Isi PDF:", content, height=300)
-                                            else:
-                                                st.error(content or "Gagal membaca PDF")
-
-                            elif ext == '.docx':
-                                if not HAS_DOCX:
-                                    st.info("💡 Install `python-docx` untuk membaca DOCX: `pip install python-docx`")
-                                else:
-                                    if st.button(f"👁️ Lihat Isi DOCX", key=f"view_{idx}"):
-                                        with st.spinner("Membaca DOCX..."):
-                                            content = read_docx_content(file_path)
-                                            if content and not content.startswith("Error"):
-                                                st.text_area("Isi DOCX:", content, height=300)
-                                            else:
-                                                st.error(content or "Gagal membaca DOCX")
-
-                            else:
-                                st.info(f"📁 Preview tidak tersedia untuk tipe file {ext.upper()}. Silakan download file.")
 
     # ==================== EVALUASI EXPERT ====================
     elif section == "📋 Evaluasi Expert":
