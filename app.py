@@ -431,34 +431,29 @@ def main():
     # Header
     st.markdown('<h1 class="main-header">📊 Hasil Penelitian RAG-LLM Assessment Generator</h1>', unsafe_allow_html=True)
     st.markdown('<p class="sub-header">Dashboard Interaktif untuk Sidang Ujian Skripsi</p>', unsafe_allow_html=True)
-    
-    # Load all data
-    evaluations = load_evaluations()
-    assessments = load_assessments()
-    assessments = load_assessments()
-    retrieval_data = load_retrieval_data_final()
-    rag_effectiveness = load_rag_effectiveness()
-    sigmoid_data = load_sigmoid_analysis()
-    
-    # Calculate stats
-    eval_stats = calculate_evaluation_stats(evaluations)
-    
+
     # Sidebar Navigation
     st.sidebar.title("📑 Navigasi")
     section = st.sidebar.radio(
         "Pilih Bagian:",
         ["🏠 Overview", "📚 Modul Lab SI", "🔍 Efektivitas RAG", "📄 Hasil Generate Soal", "📋 Evaluasi Expert", "📈 Data Mentah"]
     )
-    
+
     # Sidebar info
     st.sidebar.markdown("---")
     st.sidebar.markdown("**📅 Penelitian 2025**")
     st.sidebar.markdown("Mahendra - Universitas Hasanuddin")
-    
+
     # ==================== OVERVIEW ====================
     if section == "🏠 Overview":
+        # Lazy load: only load data needed for this section
+        evaluations = load_evaluations()
+        assessments = load_assessments()
+        retrieval_data = load_retrieval_data_final()
+        eval_stats = calculate_evaluation_stats(evaluations)
+
         st.markdown("## 📊 Ringkasan Hasil Penelitian")
-        
+
         # Key Metrics Row - 4 columns
         col1, col2, col3, col4 = st.columns(4)
         
@@ -672,9 +667,12 @@ def main():
 
     # ==================== EVALUASI EXPERT ====================
     elif section == "📋 Evaluasi Expert":
+        # Lazy load: only load data needed for this section
+        evaluations = load_evaluations()
+
         st.markdown("## 📋 Hasil Evaluasi Expert")
         st.info("**9 evaluator** melakukan evaluasi terhadap **26 sampel soal** yang dihasilkan sistem, menghasilkan **50 evaluasi** total.")
-        
+
         if evaluations:
             df_eval = pd.DataFrame(evaluations)
             
@@ -747,9 +745,13 @@ def main():
                         st.write(row["comments"])
             else:
                 st.info("Tidak ada komentar untuk filter yang dipilih.")
-    
+
     # ==================== EFEKTIVITAS RAG ====================
     elif section == "🔍 Efektivitas RAG":
+        # Lazy load: only load data needed for this section
+        rag_effectiveness = load_rag_effectiveness()
+        sigmoid_data = load_sigmoid_analysis()
+
         st.markdown("## 🔍 Efektivitas Retrieval RAG")
         
         # Sigmoid Formula Explanation
@@ -987,11 +989,14 @@ def main():
             )
             
             # Removed st.info count display as per user request
-    
+
     # ==================== HASIL GENERATE SOAL ====================
     elif section == "📄 Hasil Generate Soal":
+        # Lazy load: only load data needed for this section
+        assessments = load_assessments()
+
         st.markdown("## 📄 Hasil Generate Soal Sistem")
-        
+
         if assessments:
             # Statistics
             total_soal = len(assessments)
