@@ -1,0 +1,207 @@
+{
+  "subjects": [
+    {
+      "id": 1,
+      "name": "Algoritma dan Pemrograman",
+      "description": "Mata kuliah dasar pemrograman dengan fokus pada konsep algoritma, struktur data, dan pemrograman berorientasi objek.",
+      "modules": [
+        {
+          "id": 1,
+          "title": "Pengenalan Algoritma dan Pseudocode",
+          "file_name": "modul_01_pengenalan_algoritma.pdf",
+          "uploaded_at": "2024-09-01T08:00:00"
+        },
+        {
+          "id": 2,
+          "title": "Variabel, Tipe Data, dan Operator",
+          "file_name": "modul_02_variabel_tipe_data.pdf",
+          "uploaded_at": "2024-09-08T08:00:00"
+        },
+        {
+          "id": 3,
+          "title": "Struktur Kontrol: Percabangan dan Perulangan",
+          "file_name": "modul_03_struktur_kontrol.pdf",
+          "uploaded_at": "2024-09-15T08:00:00"
+        },
+        {
+          "id": 4,
+          "title": "Array dan List",
+          "file_name": "modul_04_array_list.pdf",
+          "uploaded_at": "2024-09-22T08:00:00"
+        },
+        {
+          "id": 5,
+          "title": "Fungsi dan Modularitas",
+          "file_name": "modul_05_fungsi_modularitas.pdf",
+          "uploaded_at": "2024-09-29T08:00:00"
+        },
+        {
+          "id": 6,
+          "title": "Pemrograman Berorientasi Objek 1: Class dan Object",
+          "file_name": "modul_06_oop_1.pdf",
+          "uploaded_at": "2024-10-06T08:00:00"
+        },
+        {
+          "id": 7,
+          "title": "Pemrograman Berorientasi Objek 2: Inheritance dan Polimorfisme",
+          "file_name": "modul_07_oop_2.pdf",
+          "uploaded_at": "2024-10-13T08:00:00"
+        },
+        {
+          "id": 8,
+          "title": "File Handling dan Exception",
+          "file_name": "modul_08_file_handling.pdf",
+          "uploaded_at": "2024-10-20T08:00:00"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Basis Data",
+      "description": "Membahas konsep dasar basis data, perancangan skema, SQL DDL, DML, dan optimasi query.",
+      "modules": [
+        {
+          "id": 9,
+          "title": "Pengenalan Basis Data dan ERD",
+          "file_name": "modul_bd_01_pengenalan.pdf",
+          "uploaded_at": "2024-09-01T08:00:00"
+        },
+        {
+          "id": 10,
+          "title": "Data Definition Language (DDL)",
+          "file_name": "modul_bd_02_ddl.pdf",
+          "uploaded_at": "2024-09-08T08:00:00"
+        },
+        {
+          "id": 11,
+          "title": "Data Manipulation Language (DML)",
+          "file_name": "modul_bd_03_dml.pdf",
+          "uploaded_at": "2024-09-15T08:00:00"
+        },
+        {
+          "id": 12,
+          "title": "Query Lanjutan: JOIN dan Agregasi",
+          "file_name": "modul_bd_04_query_lanjutan.pdf",
+          "uploaded_at": "2024-09-22T08:00:00"
+        },
+        {
+          "id": 13,
+          "title": "Normalisasi Database",
+          "file_name": "modul_bd_05_normalisasi.pdf",
+          "uploaded_at": "2024-09-29T08:00:00"
+        },
+        {
+          "id": 14,
+          "title": "Index dan View",
+          "file_name": "modul_bd_06_index_view.pdf",
+          "uploaded_at": "2024-10-06T08:00:00"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Pemrograman Web",
+      "description": "Mempelajari pengembangan aplikasi web menggunakan HTML, CSS, JavaScript, dan framework backend.",
+      "modules": [
+        {
+          "id": 15,
+          "title": "HTML5 dan Struktur Dokumen",
+          "file_name": "modul_pw_01_html5.pdf",
+          "uploaded_at": "2024-09-01T08:00:00"
+        },
+        {
+          "id": 16,
+          "title": "CSS3 dan Styling",
+          "file_name": "modul_pw_02_css3.pdf",
+          "uploaded_at": "2024-09-08T08:00:00"
+        },
+        {
+          "id": 17,
+          "title": "JavaScript Dasar",
+          "file_name": "modul_pw_03_javascript_dasar.pdf",
+          "uploaded_at": "2024-09-15T08:00:00"
+        },
+        {
+          "id": 18,
+          "title": "DOM Manipulation",
+          "file_name": "modul_pw_04_dom.pdf",
+          "uploaded_at": "2024-09-22T08:00:00"
+        },
+        {
+          "id": 19,
+          "title": "Flask Backend Dasar",
+          "file_name": "modul_pw_05_flask.pdf",
+          "uploaded_at": "2024-09-29T08:00:00"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Sistem Operasi",
+      "description": "Konsep dasar sistem operasi, manajemen proses, memori, dan file system.",
+      "modules": [
+        {
+          "id": 20,
+          "title": "Pengenalan Sistem Operasi",
+          "file_name": "modul_so_01_pengenalan.pdf",
+          "uploaded_at": "2024-09-01T08:00:00"
+        },
+        {
+          "id": 21,
+          "title": "Manajemen Proses",
+          "file_name": "modul_so_02_proses.pdf",
+          "uploaded_at": "2024-09-08T08:00:00"
+        },
+        {
+          "id": 22,
+          "title": "Manajemen Memori",
+          "file_name": "modul_so_03_memori.pdf",
+          "uploaded_at": "2024-09-15T08:00:00"
+        },
+        {
+          "id": 23,
+          "title": "File System",
+          "file_name": "modul_so_04_filesystem.pdf",
+          "uploaded_at": "2024-09-22T08:00:00"
+        },
+        {
+          "id": 24,
+          "title": "Linux Command Line",
+          "file_name": "modul_so_05_linux.pdf",
+          "uploaded_at": "2024-09-29T08:00:00"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Rekayasa Perangkat Lunak",
+      "description": "Metodologi pengembangan perangkat lunak, dari analisis kebutuhan hingga deployment.",
+      "modules": [
+        {
+          "id": 25,
+          "title": "Pengenalan RPL dan SDLC",
+          "file_name": "modul_rpl_01_pengenalan.pdf",
+          "uploaded_at": "2024-09-01T08:00:00"
+        },
+        {
+          "id": 26,
+          "title": "Requirement Engineering",
+          "file_name": "modul_rpl_02_requirements.pdf",
+          "uploaded_at": "2024-09-08T08:00:00"
+        },
+        {
+          "id": 27,
+          "title": "Software Design",
+          "file_name": "modul_rpl_03_design.pdf",
+          "uploaded_at": "2024-09-15T08:00:00"
+        },
+        {
+          "id": 28,
+          "title": "Testing dan Quality Assurance",
+          "file_name": "modul_rpl_04_testing.pdf",
+          "uploaded_at": "2024-09-22T08:00:00"
+        }
+      ]
+    }
+  ]
+}
