@@ -527,6 +527,7 @@ def main():
         # Lazy load: only load data needed for this section
         rag_effectiveness = load_rag_effectiveness()
         sigmoid_data = load_sigmoid_analysis()
+        retrieval_data = load_retrieval_data_final()
 
         st.markdown("## 🔍 Efektivitas Retrieval RAG")
         
