@@ -1,6 +1,6 @@
 Metrik,Nilai
-Avg P(relevant) - Top-K,0.9137 (91.4%)
-Avg P(relevant) - Top-1,0.9384 (93.8%)
-Success Rate (P >= 70%),91%
+Avg P(relevant) - Top-K,0.9459 (94.6%)
+Avg P(relevant) - Top-1,0.9722 (97.2%)
+Success Rate (P >= 70%),97%
 Success Rate (P >= 50%),100%
-Avg Response Time (ms),42.90 ms
+Avg Response Time (ms),42.54 ms
