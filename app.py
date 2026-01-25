@@ -721,9 +721,9 @@ def main():
         st.markdown("### 🔬 Perbandingan Skor Retrieval")
         if not sigmoid_data.empty:
             # Summary metrics - keep as decimal 0-1
-            avg_faiss = sigmoid_data["faiss_score"].mean()
-            avg_rerank = sigmoid_data["rerank_sigmoid_score"].mean() * 100
-            avg_top1 = sigmoid_data["rerank_top1_sigmoid_score"].mean() * 100
+            avg_faiss = sigmoid_data["faiss_sigmoid"].mean()
+            avg_rerank = sigmoid_data["rerank_sigmoid"].mean() * 100
+            avg_top1 = sigmoid_data["rerank_top1_sigmoid"].mean() * 100
             
             col1, col2, col3 = st.columns(3)
             col1.metric("FAISS (Cosine Similarity)", f"{avg_faiss:.2f}")
