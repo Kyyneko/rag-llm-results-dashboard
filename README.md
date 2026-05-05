@@ -19,7 +19,7 @@ streamlit run app.py
 
 ## 🌐 Live Demo
 
-[View Dashboard on Streamlit Cloud]([https://rag-llm-results-dashboard.streamlit.app](https://rag-llm-results-dashboardgit-5deiryqv7j6ahfwvxrqiqq.streamlit.app/))
+[View Dashboard on Streamlit Cloud]([https://rag-llm-results-dashboardgit-5deiryqv7j6ahfwvxrqiqq.streamlit.app])
 
 ## 📁 Data Files
 
